@@ -11,7 +11,7 @@
   <groupId>org.example.projet_chu.code</groupId>
   <artifactId>routines</artifactId>
   <version>7.3.1</version>
-  <name>PROJET_CHU Routines</name>
+  <name>CHU Routines</name>
   <properties>
     <talend.codes.package>routines</talend.codes.package>
   </properties>

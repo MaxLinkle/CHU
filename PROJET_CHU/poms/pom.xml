@@ -6,13 +6,21 @@
   <artifactId>code.Master</artifactId>
   <version>7.3.1</version>
   <packaging>pom</packaging>
-  <name>PROJET_CHU Codes Master</name>
+  <name>CHU Codes Master</name>
   <url>http://www.talend.org/</url>
   <modules>
     <module>code/routines</module>
+    <module>jobs/process/dim_diagnostic_0.1</module>
+    <module>jobs/process/fact_hospitalisation_0.1</module>
+    <module>jobs/process/dim_patient_0.1</module>
+    <module>jobs/process/dim_rdv_0.1</module>
+    <module>jobs/process/dim_visite_0.1</module>
+    <module>jobs/process/fact_hosco_0.1</module>
+    <module>jobs/process/dim_professionnelsante_0.1</module>
+    <module>jobs/process/dim_etablissement_0.1</module>
   </modules>
   <properties>
-    <talend.project.name>PROJET_CHU</talend.project.name>
+    <talend.project.name>CHU</talend.project.name>
     <encoding>UTF-8</encoding>
   </properties>
   <build>
