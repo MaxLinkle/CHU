@@ -99,27 +99,17 @@
     </dependency>
     <dependency>
       <groupId>org.example.projet_chu.job</groupId>
-      <artifactId>Fact_Deces</artifactId>
-      <version>0.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.example.projet_chu.job</groupId>
-      <artifactId>Dim_ProfessionnelSante</artifactId>
-      <version>0.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.example.projet_chu.job</groupId>
-      <artifactId>Dim_Visite</artifactId>
-      <version>0.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.example.projet_chu.job</groupId>
       <artifactId>Fact_Consultation</artifactId>
       <version>0.1.0</version>
     </dependency>
     <dependency>
       <groupId>org.example.projet_chu.job</groupId>
       <artifactId>Dim_Region</artifactId>
+      <version>0.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.example.projet_chu.job</groupId>
+      <artifactId>Fact_Deces</artifactId>
       <version>0.1.0</version>
     </dependency>
     <dependency>
@@ -134,7 +124,12 @@
     </dependency>
     <dependency>
       <groupId>org.example.projet_chu.job</groupId>
-      <artifactId>Dim_ActeDeces</artifactId>
+      <artifactId>Dim_ProfessionnelSante</artifactId>
+      <version>0.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.example.projet_chu.job</groupId>
+      <artifactId>Dim_Visite</artifactId>
       <version>0.1.0</version>
     </dependency>
     <dependency>

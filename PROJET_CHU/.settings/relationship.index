@@ -198,10 +198,6 @@
     "type" : "job"
   },
   "relatedItems" : [ {
-    "id" : "CHU:_2msAwNEqEeyJSaF0b5RlJw",
-    "version" : "Latest",
-    "type" : "job"
-  }, {
     "id" : "CHU:_37Jq0NCREeyZxa0Y8zFDkA",
     "version" : "Latest",
     "type" : "job"
