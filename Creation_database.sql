@@ -105,3 +105,15 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/CHU/Dim_Visite'
+
+-- Creating dimension table Professionnel Sante
+CREATE EXTERNAL TABLE IF NOT EXISTS dim_professionnel_sante(
+    id_professionnel_sante INT,
+    nom string,
+    prenom string
+)
+COMMENT 'Dim table Professionnel Sante'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/CHU/Dim_ProfessionnelSante'
