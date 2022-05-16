@@ -14,4 +14,25 @@ fields terminated by ';'
 stored as textfile
 location '/user/cloudera/CHU/Fact_HosCo'
 
--- 
+-- Creating dimension table RDV
+CREATE TABLE IF NOT EXISTS dim_rdv(
+
+    num_consultation INT,
+
+    date_rdv date,
+
+    heure_debut date,
+
+    heure_fin date
+
+)
+
+COMMENT 'Dim table RDV'
+
+ROW FORMAT DELIMITED
+
+FIELDS TERMINATED BY ';'
+
+STORED AS TEXTFILE
+
+LOCATION '/user/cloudera/CHU/Dim_RDV'
