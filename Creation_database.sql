@@ -93,3 +93,15 @@ row format delimited
 fields terminated by '\;'
 stored as textfile
 location '/user/cloudera/CHU/Dim_Diagnostic';
+
+-- Creating dimension table Visite
+CREATE EXTERNAL TABLE IF NOT EXISTS dim_visite(
+    num_hospitalisation INT,
+    date_visite date,
+    nb_jours int
+)
+COMMENT 'Dim table RDV'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/CHU/Dim_Visite'
