@@ -117,3 +117,15 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/CHU/Dim_ProfessionnelSante'
+
+-- Creation Fact table Hospitalisation
+CREATE EXTERNAL TABLE IF NOT EXISTS dim_Hospitalisation(
+    num_hospitalisation INT,
+    id_patient int,
+    code_diagnostic string
+)
+COMMENT 'Dim table Hospitalisation'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/CHU/Fact_Hospitalisation'
