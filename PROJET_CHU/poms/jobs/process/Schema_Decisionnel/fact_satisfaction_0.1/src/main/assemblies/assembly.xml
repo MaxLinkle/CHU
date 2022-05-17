@@ -249,6 +249,7 @@
                 <include>org.talend.libraries:geronimo-stax-api_1.0_spec-1.0.1:jar:6.0.0</include>
                 <include>org.talend.libraries:talendcsv:jar:6.0.0</include>
                 <include>org.talend.libraries:commons-collections4-4.1:jar:6.0.0</include>
+                <include>org.talend.libraries:external_sort:jar:6.0.0</include>
                 <include>org.example.projet_chu.code:routines:jar:7.3.1</include>
                 <include>org.talend.libraries:trove:jar:6.0.0</include>
             </includes>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" name="Default">
     <contextParameter comment="" name="HDFS_Cluster_User" prompt="HDFS_Cluster_User?" promptNeeded="false" repositoryContextId="_mHXdAM_JEeyZxa0Y8zFDkA" type="id_String" value=""/>
     <contextParameter comment="" name="HDFS_Cluster_hadoopConfSpecificJar" prompt="HDFS_Cluster_hadoopConfSpecificJar?" promptNeeded="false" repositoryContextId="_mHXdAM_JEeyZxa0Y8zFDkA" type="id_String" value=""/>
@@ -10,7 +10,7 @@
     <contextParameter comment="" name="PostgresSQL_Port" prompt="PostgresSQL_Port?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="5432"/>
     <contextParameter comment="" name="PostgresSQL_Database" prompt="PostgresSQL_Database?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="soins_medico_administratives"/>
     <contextParameter comment="" name="PostgresSQL_Login" prompt="PostgresSQL_Login?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="postgres"/>
-    <contextParameter comment="" name="PostgresSQL_Password" prompt="PostgresSQL_Password?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_Password" value="enc:system.encryption.key.v1:vGqIvEiZoFcEJFL4NGRHD5SyjLN5QlZtbgTO2yuQKL8="/>
+    <contextParameter comment="" name="PostgresSQL_Password" prompt="PostgresSQL_Password?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_Password" value="enc:system.encryption.key.v1:p5r4FiHvTvjfTAGuVOm9ZY1CDa724WOD2aS8rreo/WE="/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
@@ -53,7 +53,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:Gu2guLr3po2Pwl9w9/B/WrjgTcJ+oZj9Z+dEJjjT" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:KMzN0J0Jg0wjFpLuTkjleEfTnU+62MJzH+d9NBkk" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -88,7 +88,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:PNuOGULB+nrNCHw1PJNQJva/spugIDzTfrlCSj6y" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:yGz/vhLQr0em9gdMaRXpcgpBpwTIPx9+NHYM839q" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -128,7 +128,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.PostgresSQL_Database"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="context.PostgresSQL_Schema"/>
     <elementParameter field="TEXT" name="USER" value="context.PostgresSQL_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:oHg2kOtWiCviU6oW8njxgfv3PwATsFX4GEqatJ0LaLFAi4W2cAebiNUgmXHvdkFfU4mlWipDcZA="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:mSwO9iMtsilhXea1kuDTIr4WXT+OnbYMLRLWQ4h3LsmGPLFIpYqwiovLvhWBen2ALMZNadqnGjA="/>
     <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
     <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
     <elementParameter field="CHECK" name="USE_SHARED_CONNECTION" value="false"/>
@@ -162,7 +162,7 @@
     <elementParameter field="CHECK" name="USE_MAPRTICKET" value="false" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;cloudera&quot;"/>
     <elementParameter field="TEXT" name="GROUP" value="&quot;supergroup&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:xcVkxSy5Yb33UmxPV9rdFlZlhe7GENQHMPr1R7Pp" show="false"/>
+    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:5mQ2M2DalAnr1a/5AwfDyz9bc85MAfBf8RGT72LY" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_CLUSTER" value="&quot;demo.mapr.com&quot;" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_DURATION" value="" show="false"/>
     <elementParameter field="TABLE" name="HADOOP_ADVANCED_PROPERTIES"/>
@@ -171,8 +171,8 @@
     <elementParameter field="TEXT" name="HDFS_ENCRYPTION_KEY_PROVIDER" value="&quot;kms://http@localhost:16000/kms&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_FS_DEFAULT_NAME" value="&quot;adl://account.azuredatalakestore.net&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_CLIENT_ID" value="&quot;XXXX&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:Jy098KIPjcThwkehRj/gUoPoGryppHppZDgGa/wcXpqLTii2kdDy/Ve2FAcjoMfBUP29AFMYru5vfYRC+X4auj2nPF+zRF6eF3u+8iwpnXU=" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:qTDSUGgtufWX/WV/3+7XxX/QZ+cUDts5Oe3I+++XgJy2XQ==" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:+MHaWzzu7jxKoXnews7mjKlD1+4UBBg6TE4zU2CgQ5vaKTJEonUyYabNpNyUIMKwR1nidWX/KcLSSlcPtMX4gMmsJ5krDox3T4ca/LgVPnI=" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:1NitAglJ9NVPe3tTpWz4rwfn7AUadKdP+ws71BzGxxOmrA==" show="false"/>
     <elementParameter field="CHECK" name="SET_MAPR_HOME_DIR" value="false" show="false"/>
     <elementParameter field="TEXT" name="MAPR_HOME_DIR" value="&quot;/opt/mapr&quot;" show="false"/>
     <elementParameter field="CHECK" name="SET_HADOOP_LOGIN" value="false" show="false"/>
@@ -193,13 +193,13 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.PostgresSQL_Database"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="context.PostgresSQL_Schema"/>
     <elementParameter field="TEXT" name="USER" value="context.PostgresSQL_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:art880k/mFlXvjqzKFOlEYfmSMi1dtjFzvf/3XpT/RbPlIUPFvXMTNSRG6C4wTEr0iWINAG9YsA="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:YSDZS1OHOGJjnTMjpruaXHHaWbMpS53Da1ZAm+j6UgXanaye9KHR6b25oQnXkeRpNVBeXOYCbkk="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Consultation&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
-    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;Num_consultation\&quot;, \&quot;Date\&quot;, \&quot;Heure_debut\&quot;, \&quot;Heure_fin\&quot; FROM public.\&quot;Consultation\&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;Num_consultation\&quot;, \&quot;Date\&quot; as \&quot;Date_RDV\&quot;,  \&quot;Heure_debut\&quot;, \&quot;Heure_fin\&quot; FROM public.\&quot;Consultation\&quot;&quot;"/>
     <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
     <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
     <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
@@ -213,7 +213,7 @@
     <elementParameter field="TABLE" name="TRIM_COLUMN">
       <elementValue elementRef="SCHEMA_COLUMN" value="Num_consultation"/>
       <elementValue elementRef="TRIM" value="false"/>
-      <elementValue elementRef="SCHEMA_COLUMN" value="Date"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Date_RDV"/>
       <elementValue elementRef="TRIM" value="false"/>
       <elementValue elementRef="SCHEMA_COLUMN" value="Heure_debut"/>
       <elementValue elementRef="TRIM" value="false"/>
@@ -224,12 +224,53 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tDBInput_2">
       <column comment="" defaultValue="" key="false" length="10" name="Num_consultation" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="13" name="Date" nullable="true" pattern="" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="13" name="Date_RDV" nullable="true" pattern="" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="15" name="Heure_debut" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
       <column comment="" key="false" length="15" name="Heure_fin" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tHDFSOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="576" posY="224">
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="544" posY="224">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_1" show="false"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_tbk9kM_hEeyZxa0Y8zFDkA-tMap_1-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true" show="false"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" value="0" show="false"/>
+    <elementParameter field="TEXT" name="JACCARD" value="0" show="false"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="rdv">
+      <column comment="" defaultValue="" key="false" length="10" name="Num_consultation" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="13" name="Date_RDV" nullable="true" pattern="" precision="0" sourceType="DATE" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="Heure_debut" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="Heure_fin" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties/>
+      <varTables sizeState="INTERMEDIATE" name="Var">
+        <mapperTableEntries name="TrimDate" expression="TalendDate.formatDate(&quot;yyyy-MM-dd&quot;,row1.Date_RDV) " type="id_String"/>
+        <mapperTableEntries name="TrimHeureDebut" expression="TalendDate.formatDate(&quot;HH:mm:ss&quot;,row1.Heure_debut) " type="id_String"/>
+        <mapperTableEntries name="TrimHeureFin" expression="TalendDate.formatDate(&quot;HH:mm:ss&quot;,row1.Heure_fin) " type="id_String"/>
+      </varTables>
+      <outputTables sizeState="INTERMEDIATE" name="rdv">
+        <mapperTableEntries name="Num_consultation" expression="row1.Num_consultation " type="id_Integer"/>
+        <mapperTableEntries name="Date_RDV" expression="Var.TrimDate " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Heure_debut" expression="Var.TrimHeureDebut " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Heure_fin" expression="Var.TrimHeureFin " type="id_String" nullable="true"/>
+      </outputTables>
+      <inputTables sizeState="INTERMEDIATE" name="row1" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="Num_consultation" type="id_Integer"/>
+        <mapperTableEntries name="Date_RDV" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Heure_debut" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Heure_fin" type="id_Date" nullable="true"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tHDFSOutput" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="672" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tHDFSOutput_1" show="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_nGeJkM_JEeyZxa0Y8zFDkA" show="false"/>
@@ -246,8 +287,8 @@
     <elementParameter field="TEXT" name="FS_DEFAULT_NAME" value="context.HDFS_Cluster_NameNodeUri"/>
     <elementParameter field="TEXT" name="ADLS_FS_DEFAULT_NAME" value="&quot;adl://account.azuredatalakestore.net&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_CLIENT_ID" value="&quot;XXXX&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:A17QVeUrZ/ZTCuOetol2mu5x2OUsRa1y9/c2jfzmQwtakGhnDicUM9budP1HdVjUfuJeXA7hPDyFXr7BX8PZD7n3atblSJ3MDUNrJg3++Fk=" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:k1aoLswZFgjynCfK3tWBIz9M1/3VkT/WmG9eEgMrTvq0+A==" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:W7YRgoNqth9Z5lP1WhB81zwPxk3NN4/DLas6930ISKA2Lwpgnpz3dTHZ2tOZt047ZboxBboYaxRbMU/MswcZpCJFcfBuXjLSYp27lyD0aoY=" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:o8NBItuglS8+uzP7LDHtx3r5LKd3CYru7+xaO+vIg1U+Fw==" show="false"/>
     <elementParameter field="CHECK" name="USE_DATANODE_HOSTNAME" value="true"/>
     <elementParameter field="CHECK" name="USE_KRB" value="false"/>
     <elementParameter field="TEXT" name="NAMENODE_PRINCIPAL" value="&quot;hdfs/_HOST@EXAMPLE.COM&quot;" show="false"/>
@@ -257,7 +298,7 @@
     <elementParameter field="CHECK" name="USE_MAPRTICKET" value="false" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;cloudera&quot;"/>
     <elementParameter field="TEXT" name="GROUP" value="&quot;supergroup&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:qYaiR5w5HlK/kzWdrs6dg2Wx9FTI7Gd9eYlcjcED" show="false"/>
+    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:J76wqcwD40Lt7fl7b/E2PUHuhdD98rIaGc1RGwEI" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_CLUSTER" value="&quot;demo.mapr.com&quot;" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_DURATION" value="" show="false"/>
     <elementParameter field="BOTH_HADOOP" name="FILENAME" value="&quot;/user/cloudera/CHU/Dim_RDV/Dim_RDV.txt&quot;"/>
@@ -285,12 +326,12 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" name="tHDFSOutput_1">
       <column comment="" defaultValue="" key="false" length="10" name="Num_consultation" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="13" name="Date" nullable="true" pattern="" precision="0" sourceType="DATE" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="15" name="Heure_debut" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="15" name="Heure_fin" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_Date" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="13" name="Date_RDV" nullable="true" pattern="" precision="0" sourceType="DATE" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="Heure_debut" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="Heure_fin" nullable="true" pattern="" precision="6" sourceType="TIME" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
-  <node componentName="tPostgresqlClose" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="736" posY="224">
+  <node componentName="tPostgresqlClose" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="832" posY="224">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBClose_1" show="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="tDBConnection_2"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
@@ -301,14 +342,19 @@
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tHDFSConnection_2" offsetLabelX="0" offsetLabelY="0" source="tHDFSConnection_2" target="tDBInput_2">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnSubjobOk4" show="false"/>
   </connection>
-  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tHDFSOutput_1">
+  <connection connectorName="FLOW" label="row1" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tMap_1">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="rdv" lineStyle="0" metaname="rdv" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tHDFSOutput_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="rdv" show="false"/>
   </connection>
   <connection connectorName="COMPONENT_OK" label="OnComponentOk" lineStyle="3" metaname="tHDFSOutput_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSOutput_1" target="tDBClose_1">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="OnComponentOk1" show="false"/>
   </connection>
   <subjob>
+    <elementParameter field="CHECK" name="COLLAPSED" value="true" show="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBConnection_2" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="92;131;150" show="false"/>
     <elementParameter field="COLOR" name="SUBJOB_COLOR" value="207;226;236"/>

@@ -409,7 +409,27 @@ public class Dim_RDV implements TalendJob {
 		tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tMap_1_error(Exception exception, String errorComponent, final java.util.Map<String, Object> globalMap)
+			throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tHDFSOutput_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBInput_2_onSubJobError(exception, errorComponent, globalMap);
+	}
+
+	public void tLogRow_1_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
 		end_Hash.put(errorComponent, System.currentTimeMillis());
@@ -804,6 +824,316 @@ public class Dim_RDV implements TalendJob {
 		globalMap.put("tHDFSConnection_2_SUBPROCESS_STATE", 1);
 	}
 
+	public static class row2Struct implements routines.system.IPersistableRow<row2Struct> {
+		final static byte[] commonByteArrayLock_CHU_Dim_RDV = new byte[0];
+		static byte[] commonByteArray_CHU_Dim_RDV = new byte[0];
+
+		public int Num_consultation;
+
+		public int getNum_consultation() {
+			return this.Num_consultation;
+		}
+
+		public String Date_RDV;
+
+		public String getDate_RDV() {
+			return this.Date_RDV;
+		}
+
+		public String Heure_debut;
+
+		public String getHeure_debut() {
+			return this.Heure_debut;
+		}
+
+		public String Heure_fin;
+
+		public String getHeure_fin() {
+			return this.Heure_fin;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Dim_RDV.length) {
+					if (length < 1024 && commonByteArray_CHU_Dim_RDV.length == 0) {
+						commonByteArray_CHU_Dim_RDV = new byte[1024];
+					} else {
+						commonByteArray_CHU_Dim_RDV = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Dim_RDV, 0, length);
+				strReturn = new String(commonByteArray_CHU_Dim_RDV, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Dim_RDV) {
+
+				try {
+
+					int length = 0;
+
+					this.Num_consultation = dis.readInt();
+
+					this.Date_RDV = readString(dis);
+
+					this.Heure_debut = readString(dis);
+
+					this.Heure_fin = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// int
+
+				dos.writeInt(this.Num_consultation);
+
+				// String
+
+				writeString(this.Date_RDV, dos);
+
+				// String
+
+				writeString(this.Heure_debut, dos);
+
+				// String
+
+				writeString(this.Heure_fin, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("Num_consultation=" + String.valueOf(Num_consultation));
+			sb.append(",Date_RDV=" + Date_RDV);
+			sb.append(",Heure_debut=" + Heure_debut);
+			sb.append(",Heure_fin=" + Heure_fin);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row2Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class rdvStruct implements routines.system.IPersistableRow<rdvStruct> {
+		final static byte[] commonByteArrayLock_CHU_Dim_RDV = new byte[0];
+		static byte[] commonByteArray_CHU_Dim_RDV = new byte[0];
+
+		public int Num_consultation;
+
+		public int getNum_consultation() {
+			return this.Num_consultation;
+		}
+
+		public String Date_RDV;
+
+		public String getDate_RDV() {
+			return this.Date_RDV;
+		}
+
+		public String Heure_debut;
+
+		public String getHeure_debut() {
+			return this.Heure_debut;
+		}
+
+		public String Heure_fin;
+
+		public String getHeure_fin() {
+			return this.Heure_fin;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Dim_RDV.length) {
+					if (length < 1024 && commonByteArray_CHU_Dim_RDV.length == 0) {
+						commonByteArray_CHU_Dim_RDV = new byte[1024];
+					} else {
+						commonByteArray_CHU_Dim_RDV = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Dim_RDV, 0, length);
+				strReturn = new String(commonByteArray_CHU_Dim_RDV, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Dim_RDV) {
+
+				try {
+
+					int length = 0;
+
+					this.Num_consultation = dis.readInt();
+
+					this.Date_RDV = readString(dis);
+
+					this.Heure_debut = readString(dis);
+
+					this.Heure_fin = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// int
+
+				dos.writeInt(this.Num_consultation);
+
+				// String
+
+				writeString(this.Date_RDV, dos);
+
+				// String
+
+				writeString(this.Heure_debut, dos);
+
+				// String
+
+				writeString(this.Heure_fin, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("Num_consultation=" + String.valueOf(Num_consultation));
+			sb.append(",Date_RDV=" + Date_RDV);
+			sb.append(",Heure_debut=" + Heure_debut);
+			sb.append(",Heure_fin=" + Heure_fin);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(rdvStruct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
 	public static class row1Struct implements routines.system.IPersistableRow<row1Struct> {
 		final static byte[] commonByteArrayLock_CHU_Dim_RDV = new byte[0];
 		static byte[] commonByteArray_CHU_Dim_RDV = new byte[0];
@@ -814,10 +1144,10 @@ public class Dim_RDV implements TalendJob {
 			return this.Num_consultation;
 		}
 
-		public java.util.Date Date;
+		public java.util.Date Date_RDV;
 
-		public java.util.Date getDate() {
-			return this.Date;
+		public java.util.Date getDate_RDV() {
+			return this.Date_RDV;
 		}
 
 		public java.util.Date Heure_debut;
@@ -863,7 +1193,7 @@ public class Dim_RDV implements TalendJob {
 
 					this.Num_consultation = dis.readInt();
 
-					this.Date = readDate(dis);
+					this.Date_RDV = readDate(dis);
 
 					this.Heure_debut = readDate(dis);
 
@@ -887,7 +1217,7 @@ public class Dim_RDV implements TalendJob {
 
 				// java.util.Date
 
-				writeDate(this.Date, dos);
+				writeDate(this.Date_RDV, dos);
 
 				// java.util.Date
 
@@ -909,7 +1239,7 @@ public class Dim_RDV implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("Num_consultation=" + String.valueOf(Num_consultation));
-			sb.append(",Date=" + String.valueOf(Date));
+			sb.append(",Date_RDV=" + String.valueOf(Date_RDV));
 			sb.append(",Heure_debut=" + String.valueOf(Heure_debut));
 			sb.append(",Heure_fin=" + String.valueOf(Heure_fin));
 			sb.append("]");
@@ -971,6 +1301,160 @@ public class Dim_RDV implements TalendJob {
 				globalResumeTicket = true;
 
 				row1Struct row1 = new row1Struct();
+				rdvStruct rdv = new rdvStruct();
+				rdvStruct row2 = rdv;
+
+				/**
+				 * [tLogRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_1", false);
+				start_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				currentComponent = "tLogRow_1";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row2");
+				}
+
+				int tos_count_tLogRow_1 = 0;
+
+				///////////////////////
+
+				class Util_tLogRow_1 {
+
+					String[] des_top = { ".", ".", "-", "+" };
+
+					String[] des_head = { "|=", "=|", "-", "+" };
+
+					String[] des_bottom = { "'", "'", "-", "+" };
+
+					String name = "";
+
+					java.util.List<String[]> list = new java.util.ArrayList<String[]>();
+
+					int[] colLengths = new int[4];
+
+					public void addRow(String[] row) {
+
+						for (int i = 0; i < 4; i++) {
+							if (row[i] != null) {
+								colLengths[i] = Math.max(colLengths[i], row[i].length());
+							}
+						}
+						list.add(row);
+					}
+
+					public void setTableName(String name) {
+
+						this.name = name;
+					}
+
+					public StringBuilder format() {
+
+						StringBuilder sb = new StringBuilder();
+
+						sb.append(print(des_top));
+
+						int totals = 0;
+						for (int i = 0; i < colLengths.length; i++) {
+							totals = totals + colLengths[i];
+						}
+
+						// name
+						sb.append("|");
+						int k = 0;
+						for (k = 0; k < (totals + 3 - name.length()) / 2; k++) {
+							sb.append(' ');
+						}
+						sb.append(name);
+						for (int i = 0; i < totals + 3 - name.length() - k; i++) {
+							sb.append(' ');
+						}
+						sb.append("|\n");
+
+						// head and rows
+						sb.append(print(des_head));
+						for (int i = 0; i < list.size(); i++) {
+
+							String[] row = list.get(i);
+
+							java.util.Formatter formatter = new java.util.Formatter(new StringBuilder());
+
+							StringBuilder sbformat = new StringBuilder();
+							sbformat.append("|%1$-");
+							sbformat.append(colLengths[0]);
+							sbformat.append("s");
+
+							sbformat.append("|%2$-");
+							sbformat.append(colLengths[1]);
+							sbformat.append("s");
+
+							sbformat.append("|%3$-");
+							sbformat.append(colLengths[2]);
+							sbformat.append("s");
+
+							sbformat.append("|%4$-");
+							sbformat.append(colLengths[3]);
+							sbformat.append("s");
+
+							sbformat.append("|\n");
+
+							formatter.format(sbformat.toString(), (Object[]) row);
+
+							sb.append(formatter.toString());
+							if (i == 0)
+								sb.append(print(des_head)); // print the head
+						}
+
+						// end
+						sb.append(print(des_bottom));
+						return sb;
+					}
+
+					private StringBuilder print(String[] fillChars) {
+						StringBuilder sb = new StringBuilder();
+						// first column
+						sb.append(fillChars[0]);
+						for (int i = 0; i < colLengths[0] - fillChars[0].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+
+						for (int i = 0; i < colLengths[1] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+						for (int i = 0; i < colLengths[2] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+
+						// last column
+						for (int i = 0; i < colLengths[3] - fillChars[1].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[1]);
+						sb.append("\n");
+						return sb;
+					}
+
+					public boolean isTableEmpty() {
+						if (list.size() > 1)
+							return false;
+						return true;
+					}
+				}
+				Util_tLogRow_1 util_tLogRow_1 = new Util_tLogRow_1();
+				util_tLogRow_1.setTableName("tLogRow_1");
+				util_tLogRow_1.addRow(new String[] { "Num_consultation", "Date_RDV", "Heure_debut", "Heure_fin", });
+				StringBuilder strBuffer_tLogRow_1 = null;
+				int nb_line_tLogRow_1 = 0;
+///////////////////////    			
+
+				/**
+				 * [tLogRow_1 begin ] stop
+				 */
 
 				/**
 				 * [tHDFSOutput_1 begin ] start
@@ -982,7 +1466,7 @@ public class Dim_RDV implements TalendJob {
 				currentComponent = "tHDFSOutput_1";
 
 				if (execStat) {
-					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row1");
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "rdv");
 				}
 
 				int tos_count_tHDFSOutput_1 = 0;
@@ -1023,6 +1507,44 @@ public class Dim_RDV implements TalendJob {
 				 */
 
 				/**
+				 * [tMap_1 begin ] start
+				 */
+
+				ok_Hash.put("tMap_1", false);
+				start_Hash.put("tMap_1", System.currentTimeMillis());
+
+				currentComponent = "tMap_1";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row1");
+				}
+
+				int tos_count_tMap_1 = 0;
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_1__Struct {
+					String TrimDate;
+					String TrimHeureDebut;
+					String TrimHeureFin;
+				}
+				Var__tMap_1__Struct Var__tMap_1 = new Var__tMap_1__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				rdvStruct rdv_tmp = new rdvStruct();
+// ###############################
+
+				/**
+				 * [tMap_1 begin ] stop
+				 */
+
+				/**
 				 * [tDBInput_2 begin ] start
 				 */
 
@@ -1054,7 +1576,7 @@ public class Dim_RDV implements TalendJob {
 
 				java.sql.Statement stmt_tDBInput_2 = conn_tDBInput_2.createStatement();
 
-				String dbquery_tDBInput_2 = "SELECT \"Num_consultation\", \"Date\", \"Heure_debut\", \"Heure_fin\" FROM public.\"Consultation\"";
+				String dbquery_tDBInput_2 = "SELECT \"Num_consultation\", \"Date\" as \"Date_RDV\",  \"Heure_debut\", \"Heure_fin\" FROM public.\"Consultation\"";
 
 				globalMap.put("tDBInput_2_QUERY", dbquery_tDBInput_2);
 				java.sql.ResultSet rs_tDBInput_2 = null;
@@ -1079,10 +1601,10 @@ public class Dim_RDV implements TalendJob {
 							}
 						}
 						if (colQtyInRs_tDBInput_2 < 2) {
-							row1.Date = null;
+							row1.Date_RDV = null;
 						} else {
 
-							row1.Date = routines.system.JDBCUtil.getDate(rs_tDBInput_2, 2);
+							row1.Date_RDV = routines.system.JDBCUtil.getDate(rs_tDBInput_2, 2);
 						}
 						if (colQtyInRs_tDBInput_2 < 3) {
 							row1.Heure_debut = null;
@@ -1124,89 +1646,230 @@ public class Dim_RDV implements TalendJob {
 						 */
 
 						/**
-						 * [tHDFSOutput_1 main ] start
+						 * [tMap_1 main ] start
 						 */
 
-						currentComponent = "tHDFSOutput_1";
+						currentComponent = "tMap_1";
 
 						if (execStat) {
 							runStat.updateStatOnConnection(iterateId, 1, 1, "row1");
 						}
 
-						StringBuilder sb_tHDFSOutput_1 = new StringBuilder();
+						boolean hasCasePrimitiveKeyWithNull_tMap_1 = false;
 
-						sb_tHDFSOutput_1.append(
+						// ###############################
+						// # Input tables (lookups)
+						boolean rejectedInnerJoin_tMap_1 = false;
+						boolean mainRowRejected_tMap_1 = false;
 
-								row1.Num_consultation
+						// ###############################
+						{ // start of Var scope
 
-						);
+							// ###############################
+							// # Vars tables
 
-						sb_tHDFSOutput_1.append(";");
+							Var__tMap_1__Struct Var = Var__tMap_1;
+							Var.TrimDate = TalendDate.formatDate("yyyy-MM-dd", row1.Date_RDV);
+							Var.TrimHeureDebut = TalendDate.formatDate("HH:mm:ss", row1.Heure_debut);
+							Var.TrimHeureFin = TalendDate.formatDate("HH:mm:ss", row1.Heure_fin);// ###############################
+							// ###############################
+							// # Output tables
 
-						if (row1.Date != null) {
+							rdv = null;
+
+// # Output table : 'rdv'
+							rdv_tmp.Num_consultation = row1.Num_consultation;
+							rdv_tmp.Date_RDV = Var.TrimDate;
+							rdv_tmp.Heure_debut = Var.TrimHeureDebut;
+							rdv_tmp.Heure_fin = Var.TrimHeureFin;
+							rdv = rdv_tmp;
+// ###############################
+
+						} // end of Var scope
+
+						rejectedInnerJoin_tMap_1 = false;
+
+						tos_count_tMap_1++;
+
+						/**
+						 * [tMap_1 main ] stop
+						 */
+
+						/**
+						 * [tMap_1 process_data_begin ] start
+						 */
+
+						currentComponent = "tMap_1";
+
+						/**
+						 * [tMap_1 process_data_begin ] stop
+						 */
+// Start of branch "rdv"
+						if (rdv != null) {
+
+							/**
+							 * [tHDFSOutput_1 main ] start
+							 */
+
+							currentComponent = "tHDFSOutput_1";
+
+							if (execStat) {
+								runStat.updateStatOnConnection(iterateId, 1, 1, "rdv");
+							}
+
+							StringBuilder sb_tHDFSOutput_1 = new StringBuilder();
 
 							sb_tHDFSOutput_1.append(
 
-									row1.Date
+									rdv.Num_consultation
 
 							);
 
-						}
+							sb_tHDFSOutput_1.append(";");
 
-						sb_tHDFSOutput_1.append(";");
+							if (rdv.Date_RDV != null) {
 
-						if (row1.Heure_debut != null) {
+								sb_tHDFSOutput_1.append(
 
-							sb_tHDFSOutput_1.append(
+										rdv.Date_RDV
 
-									row1.Heure_debut
+								);
 
-							);
+							}
 
-						}
+							sb_tHDFSOutput_1.append(";");
 
-						sb_tHDFSOutput_1.append(";");
+							if (rdv.Heure_debut != null) {
 
-						if (row1.Heure_fin != null) {
+								sb_tHDFSOutput_1.append(
 
-							sb_tHDFSOutput_1.append(
+										rdv.Heure_debut
 
-									row1.Heure_fin
+								);
 
-							);
+							}
 
-						}
+							sb_tHDFSOutput_1.append(";");
 
-						sb_tHDFSOutput_1.append("\n");
+							if (rdv.Heure_fin != null) {
 
-						outtHDFSOutput_1.write(sb_tHDFSOutput_1.toString());
+								sb_tHDFSOutput_1.append(
 
-						nb_line_tHDFSOutput_1++;
+										rdv.Heure_fin
 
-						tos_count_tHDFSOutput_1++;
+								);
+
+							}
+
+							sb_tHDFSOutput_1.append("\n");
+
+							outtHDFSOutput_1.write(sb_tHDFSOutput_1.toString());
+
+							nb_line_tHDFSOutput_1++;
+
+							row2 = rdv;
+
+							tos_count_tHDFSOutput_1++;
+
+							/**
+							 * [tHDFSOutput_1 main ] stop
+							 */
+
+							/**
+							 * [tHDFSOutput_1 process_data_begin ] start
+							 */
+
+							currentComponent = "tHDFSOutput_1";
+
+							/**
+							 * [tHDFSOutput_1 process_data_begin ] stop
+							 */
+
+							/**
+							 * [tLogRow_1 main ] start
+							 */
+
+							currentComponent = "tLogRow_1";
+
+							if (execStat) {
+								runStat.updateStatOnConnection(iterateId, 1, 1, "row2");
+							}
+
+///////////////////////		
+
+							String[] row_tLogRow_1 = new String[4];
+
+							row_tLogRow_1[0] = String.valueOf(row2.Num_consultation);
+
+							if (row2.Date_RDV != null) { //
+								row_tLogRow_1[1] = String.valueOf(row2.Date_RDV);
+
+							} //
+
+							if (row2.Heure_debut != null) { //
+								row_tLogRow_1[2] = String.valueOf(row2.Heure_debut);
+
+							} //
+
+							if (row2.Heure_fin != null) { //
+								row_tLogRow_1[3] = String.valueOf(row2.Heure_fin);
+
+							} //
+
+							util_tLogRow_1.addRow(row_tLogRow_1);
+							nb_line_tLogRow_1++;
+//////
+
+//////                    
+
+///////////////////////    			
+
+							tos_count_tLogRow_1++;
+
+							/**
+							 * [tLogRow_1 main ] stop
+							 */
+
+							/**
+							 * [tLogRow_1 process_data_begin ] start
+							 */
+
+							currentComponent = "tLogRow_1";
+
+							/**
+							 * [tLogRow_1 process_data_begin ] stop
+							 */
+
+							/**
+							 * [tLogRow_1 process_data_end ] start
+							 */
+
+							currentComponent = "tLogRow_1";
+
+							/**
+							 * [tLogRow_1 process_data_end ] stop
+							 */
+
+							/**
+							 * [tHDFSOutput_1 process_data_end ] start
+							 */
+
+							currentComponent = "tHDFSOutput_1";
+
+							/**
+							 * [tHDFSOutput_1 process_data_end ] stop
+							 */
+
+						} // End of branch "rdv"
 
 						/**
-						 * [tHDFSOutput_1 main ] stop
+						 * [tMap_1 process_data_end ] start
 						 */
 
-						/**
-						 * [tHDFSOutput_1 process_data_begin ] start
-						 */
-
-						currentComponent = "tHDFSOutput_1";
+						currentComponent = "tMap_1";
 
 						/**
-						 * [tHDFSOutput_1 process_data_begin ] stop
-						 */
-
-						/**
-						 * [tHDFSOutput_1 process_data_end ] start
-						 */
-
-						currentComponent = "tHDFSOutput_1";
-
-						/**
-						 * [tHDFSOutput_1 process_data_end ] stop
+						 * [tMap_1 process_data_end ] stop
 						 */
 
 						/**
@@ -1258,6 +1921,27 @@ public class Dim_RDV implements TalendJob {
 				 */
 
 				/**
+				 * [tMap_1 end ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+// ###############################
+// # Lookup hashes releasing
+// ###############################      
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row1");
+				}
+
+				ok_Hash.put("tMap_1", true);
+				end_Hash.put("tMap_1", System.currentTimeMillis());
+
+				/**
+				 * [tMap_1 end ] stop
+				 */
+
+				/**
 				 * [tHDFSOutput_1 end ] start
 				 */
 
@@ -1268,7 +1952,7 @@ public class Dim_RDV implements TalendJob {
 				}
 
 				if (execStat) {
-					runStat.updateStat(resourceMap, iterateId, 2, 0, "row1");
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "rdv");
 				}
 
 				ok_Hash.put("tHDFSOutput_1", true);
@@ -1281,6 +1965,40 @@ public class Dim_RDV implements TalendJob {
 
 				/**
 				 * [tHDFSOutput_1 end ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+//////
+
+				java.io.PrintStream consoleOut_tLogRow_1 = null;
+				if (globalMap.get("tLogRow_CONSOLE") != null) {
+					consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
+				} else {
+					consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
+					globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
+				}
+
+				consoleOut_tLogRow_1.println(util_tLogRow_1.format().toString());
+				consoleOut_tLogRow_1.flush();
+//////
+				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
+
+///////////////////////    			
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row2");
+				}
+
+				ok_Hash.put("tLogRow_1", true);
+				end_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_1 end ] stop
 				 */
 
 			} // end the resume
@@ -1310,6 +2028,16 @@ public class Dim_RDV implements TalendJob {
 				 */
 
 				/**
+				 * [tMap_1 finally ] start
+				 */
+
+				currentComponent = "tMap_1";
+
+				/**
+				 * [tMap_1 finally ] stop
+				 */
+
+				/**
 				 * [tHDFSOutput_1 finally ] start
 				 */
 
@@ -1317,6 +2045,16 @@ public class Dim_RDV implements TalendJob {
 
 				/**
 				 * [tHDFSOutput_1 finally ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 finally ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 finally ] stop
 				 */
 
 			} catch (java.lang.Exception e) {
@@ -2288,6 +3026,6 @@ public class Dim_RDV implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 73290 characters generated by Talend Open Studio for Big Data on the 13 mai
- * 2022 13:24:48 CEST
+ * 93673 characters generated by Talend Open Studio for Big Data on the 16 mai
+ * 2022 22:47:54 CEST
  ************************************************************************************************/

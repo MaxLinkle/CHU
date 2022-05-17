@@ -6,7 +6,7 @@
     <contextParameter comment="" name="PostgresSQL_Login" prompt="PostgresSQL_Login?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="postgres"/>
     <contextParameter comment="" name="PostgresSQL_Database" prompt="PostgresSQL_Database?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="soins_medico_administratives"/>
     <contextParameter comment="" name="PostgresSQL_AdditionalParams" prompt="PostgresSQL_AdditionalParams?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value=""/>
-    <contextParameter comment="" name="PostgresSQL_Password" prompt="PostgresSQL_Password?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_Password" value="enc:system.encryption.key.v1:zcR9nBb1d/VoTDYxFtQfqKKRF3ZV+BE65zKE1ih9VCY="/>
+    <contextParameter comment="" name="PostgresSQL_Password" prompt="PostgresSQL_Password?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_Password" value="enc:system.encryption.key.v1:LdifrUmz/acXGVXotYJ9D7RLSWMwO11UJa3t/P0vfzU="/>
     <contextParameter comment="" name="PostgresSQL_Port" prompt="PostgresSQL_Port?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="5432"/>
     <contextParameter comment="" name="HDFS_Cluster_NameNodeUri" prompt="HDFS_Cluster_NameNodeUri?" promptNeeded="false" repositoryContextId="_mHXdAM_JEeyZxa0Y8zFDkA" type="id_String" value="hdfs://quickstart.cloudera:8020"/>
     <contextParameter comment="" name="HDFS_Cluster_User" prompt="HDFS_Cluster_User?" promptNeeded="false" repositoryContextId="_mHXdAM_JEeyZxa0Y8zFDkA" type="id_String" value=""/>
@@ -53,7 +53,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:aInR3Izm/Estpvs5VETJE32SvkupQFQwHjlS0o7S" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:Y8VQHitCbMxqnng71tp3oKFAVLuzWVAbBMGphu49" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -88,7 +88,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:mjjMdEf2X1H0/mFtJmSvoDHExhfhqhwxmmqhSVsZ" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:/52xlqUn72UUrQcYMmalIZwufeqOmsipDSeoZoQE" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -130,7 +130,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="context.PostgresSQL_Database"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="context.PostgresSQL_Schema"/>
     <elementParameter field="TEXT" name="USER" value="context.PostgresSQL_Login"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:UfN7tmA3z9AMUSQCVcHcrwZnfKE3ASB0rrnCk/rP0AMbZ567K4H/nzs8jIbvDkVfUeBCO/nVsMk="/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:CTqUotapc4wYS7MpmYPA0PZmqT2ccMQtct44SmIK1mNzJtxDHMwTfvG5dR6B1LCog4jgUD37Q9Y="/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;Consultation&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
@@ -183,19 +183,19 @@
     <metadata connector="FLOW" label="consultation" name="consultation">
       <column comment="" defaultValue="" key="false" length="10" name="Num_consultation" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="Id_patient" nullable="true" pattern="" precision="0" sourceType="INT4" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="2147483647" name="Code_diag" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="2147483647" name="Id_prof_sante" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="15" name="identifiant_organisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="Code_diagnostic" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="Id_professionnel_sante" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="8" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="id_organisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties shellMaximized="true"/>
-      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="consultation">
         <mapperTableEntries name="Num_consultation" expression="row7.Num_consultation " type="id_Integer"/>
         <mapperTableEntries name="Id_patient" expression="row7.Id_patient " type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="Code_diag" expression="row7.Code_diag " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Id_prof_sante" expression="row7.Id_prof_sante " type="id_String" nullable="true"/>
-        <mapperTableEntries name="identifiant_organisation" expression="row1.identifiant_organisation " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Code_diagnostic" expression="row7.Code_diag " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Id_professionnel_sante" expression="row7.Id_prof_sante " type="id_String" nullable="true"/>
+        <mapperTableEntries name="id_organisation" expression="row1.identifiant_organisation " type="id_String" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row7" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="Num_consultation" type="id_Integer"/>
@@ -227,8 +227,8 @@
     <elementParameter field="TEXT" name="FS_DEFAULT_NAME" value="context.HDFS_Cluster_NameNodeUri"/>
     <elementParameter field="TEXT" name="ADLS_FS_DEFAULT_NAME" value="&quot;adl://account.azuredatalakestore.net&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_CLIENT_ID" value="&quot;XXXX&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:3J7yFHx0J83EAtFOlYuCfJ66E9bVNiekjkz6MHNW/HYh0IV5m53gLScjmnbRIENEhs/3AD+vftbapTq4+dx3zAEnLB7V6XnVLPHtFSSRKuE=" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:RmBGrLWIihBnDji4etqyam74udkzzb1ALbiE4/s0RzrLFw==" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:nWGVJJpZi9LwZL9x8BgaN7e17fdN3+/+ibOQ5YVBruRvVTie+i99DJTz189u1jer90wTh/918PwQltsflkOaRQcWEcRVfTVsTnH93x2nXnY=" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:DQvkzN2xjJ0v4+ZPKOBt0+ViawE58TBYH2njcLZHIKI4FA==" show="false"/>
     <elementParameter field="CHECK" name="USE_DATANODE_HOSTNAME" value="true"/>
     <elementParameter field="CHECK" name="USE_KRB" value="false"/>
     <elementParameter field="TEXT" name="NAMENODE_PRINCIPAL" value="&quot;hdfs/_HOST@EXAMPLE.COM&quot;" show="false"/>
@@ -238,7 +238,7 @@
     <elementParameter field="CHECK" name="USE_MAPRTICKET" value="false" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;cloudera&quot;"/>
     <elementParameter field="TEXT" name="GROUP" value="&quot;supergroup&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:vki/RAnE/BwUdl37QGi7RPpsduRQDA6/iYg2IDsG" show="false"/>
+    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:SzQmN/1qK7InWSed8cBswZl/XTwXmPhHb41kCGtP" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_CLUSTER" value="&quot;demo.mapr.com&quot;" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_DURATION" value="" show="false"/>
     <elementParameter field="BOTH_HADOOP" name="FILENAME" value="&quot;/user/cloudera/CHU/Fact_Consultation/Fact_Consultation.txt&quot;"/>
@@ -267,9 +267,9 @@
     <metadata connector="FLOW" label="consultation" name="tHDFSOutput_1">
       <column comment="" defaultValue="" key="false" length="10" name="Num_consultation" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" originalLength="-1" usefulColumn="true"/>
       <column comment="" defaultValue="" key="false" length="10" name="Id_patient" nullable="true" pattern="" precision="0" sourceType="INT4" type="id_Integer" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="2147483647" name="Code_diag" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="2147483647" name="Id_prof_sante" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
-      <column comment="" key="false" length="15" name="identifiant_organisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="Code_diagnostic" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="Id_professionnel_sante" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="8" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="id_organisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
     </metadata>
   </node>
   <node componentName="tFileInputDelimited" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="224">
@@ -340,6 +340,42 @@
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
     </metadata>
   </node>
+  <node componentName="tLogRow" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="864" posY="160">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tLogRow_1" show="false"/>
+    <elementParameter field="RADIO" name="BASIC_MODE" value="false"/>
+    <elementParameter field="RADIO" name="TABLE_PRINT" value="true"/>
+    <elementParameter field="RADIO" name="VERTICAL" value="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE" value="true" show="false"/>
+    <elementParameter field="RADIO" name="PRINT_LABEL" value="false" show="false"/>
+    <elementParameter field="RADIO" name="PRINT_UNIQUE_LABEL" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;|&quot;" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_HEADER" value="false" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_UNIQUE_NAME" value="false" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_COLNAMES" value="false" show="false"/>
+    <elementParameter field="CHECK" name="USE_FIXED_LENGTH" value="false" show="false"/>
+    <elementParameter field="TABLE" name="LENGTHS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Num_consultation"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Id_patient"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Code_diagnostic"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Id_professionnel_sante"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="id_organisation"/>
+      <elementValue elementRef="LENGTH" value="10"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="PRINT_CONTENT_WITH_LOG4J" value="true"/>
+    <elementParameter field="TEXT" name="SCHEMA_OPT_NUM" value="100" show="false"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="consultation" name="tLogRow_1">
+      <column comment="" defaultValue="" key="false" length="10" name="Num_consultation" nullable="false" pattern="" precision="0" sourceType="SERIAL" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="10" name="Id_patient" nullable="true" pattern="" precision="0" sourceType="INT4" type="id_Integer" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="2147483647" name="Code_diagnostic" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="8" name="Id_professionnel_sante" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="8" usefulColumn="true"/>
+      <column comment="" key="false" length="15" name="id_organisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
+    </metadata>
+  </node>
   <node componentName="tHDFSConnection" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="256" posY="128">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tHDFSConnection_1" show="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
@@ -361,7 +397,7 @@
     <elementParameter field="CHECK" name="USE_MAPRTICKET" value="false" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;cloudera&quot;"/>
     <elementParameter field="TEXT" name="GROUP" value="&quot;supergroup&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:kdraGLD8xZPAPplib1llXGE8HvQzUle/2PMiV9Lj" show="false"/>
+    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:0aCNPwcc0z7iQBobCF3nkgNnyxypWYsr4QmDpXB7" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_CLUSTER" value="&quot;demo.mapr.com&quot;" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_DURATION" value="" show="false"/>
     <elementParameter field="TABLE" name="HADOOP_ADVANCED_PROPERTIES"/>
@@ -370,8 +406,8 @@
     <elementParameter field="TEXT" name="HDFS_ENCRYPTION_KEY_PROVIDER" value="&quot;kms://http@localhost:16000/kms&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_FS_DEFAULT_NAME" value="&quot;adl://account.azuredatalakestore.net&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_CLIENT_ID" value="&quot;XXXX&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:Fx8XrSV5v7DnnFoX9a4Y0loYYWxAzP0aKrOcj0WNkOYizCleQWcCUsIs2bgUcKSH0avYHXJOkFqlzrZcO8RciVHejqCbGCM5c23/xD+VChM=" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:5gE5Btc0SRoEigcT7cHqyAhwgThjZVy9q56s5wMZtU75dA==" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:CExDUmnm0g+gXXkEAQxO56yUool5I3uVbfIstAdGaKO3RCJAa1iWr9KO2x/cmgfywBUC1XGAIbmdS3Pl8wmbldObcFP8yng1LUQdYvTamNE=" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:0mkjtiIO5gX6JScdiubFJJrWrylXJJsVD/JjCShx0bAR9A==" show="false"/>
     <elementParameter field="CHECK" name="SET_MAPR_HOME_DIR" value="false" show="false"/>
     <elementParameter field="TEXT" name="MAPR_HOME_DIR" value="&quot;/opt/mapr&quot;" show="false"/>
     <elementParameter field="CHECK" name="SET_HADOOP_LOGIN" value="false" show="false"/>
@@ -384,8 +420,20 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row7" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="consultation" lineStyle="0" metaname="consultation" offsetLabelX="0" offsetLabelY="0" source="tMap_3" target="tHDFSOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Code_diagnostic"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+      <elementValue elementRef="TRACE_COLUMN" value="Id_professionnel_sante"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="consultation" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="row2" lineStyle="0" metaname="tHDFSOutput_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSOutput_1" target="tLogRow_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="row2" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="row1" lineStyle="8" metaname="tFileInputDelimited_3" offsetLabelX="0" offsetLabelY="0" source="tFileInputDelimited_3" target="tMap_3">
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>

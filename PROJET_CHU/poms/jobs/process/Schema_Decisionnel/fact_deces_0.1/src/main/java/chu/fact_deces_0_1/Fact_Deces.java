@@ -445,6 +445,23 @@ public class Fact_Deces implements TalendJob {
 		tHadoopConfManager_tHDFSOutput_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tSortRow_1_SortOut_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		tSortRow_1_SortIn_error(exception, errorComponent, globalMap);
+
+	}
+
+	public void tSortRow_1_SortIn_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputExcel_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tAggregateRow_1_AGGOUT_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -2208,6 +2225,7 @@ public class Fact_Deces implements TalendJob {
 // ###############################
 // # Vars initialization
 				class Var__tMap_3__Struct {
+					String TrimRegion;
 				}
 				Var__tMap_3__Struct Var__tMap_3 = new Var__tMap_3__Struct();
 // ###############################
@@ -2519,15 +2537,16 @@ public class Fact_Deces implements TalendJob {
 								// ###############################
 								// # Vars tables
 
-								Var__tMap_3__Struct Var = Var__tMap_3;// ###############################
+								Var__tMap_3__Struct Var = Var__tMap_3;
+								Var.TrimRegion = StringHandling.UPCASE(StringHandling
+										.CHANGE(TalendString.removeAccents(row4.Nom_Actuel_Region_Deces), "-", " "));// ###############################
 								// ###############################
 								// # Output tables
 
 								acte = null;
 
 // # Output table : 'acte'
-								acte_tmp.Nom_Actuel_Region_Deces = StringHandling.UPCASE(StringHandling
-										.CHANGE(TalendString.removeAccents(row4.Nom_Actuel_Region_Deces), "-", " "));
+								acte_tmp.Nom_Actuel_Region_Deces = Var.TrimRegion;
 								acte = acte_tmp;
 // ###############################
 
@@ -3357,6 +3376,239 @@ public class Fact_Deces implements TalendJob {
 			if (returnValue != 0) {
 				return returnValue;
 			}
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row7Struct implements routines.system.IPersistableRow<row7Struct> {
+		final static byte[] commonByteArrayLock_CHU_Fact_Deces = new byte[0];
+		static byte[] commonByteArray_CHU_Fact_Deces = new byte[0];
+
+		public String region;
+
+		public String getRegion() {
+			return this.region;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Fact_Deces.length) {
+					if (length < 1024 && commonByteArray_CHU_Fact_Deces.length == 0) {
+						commonByteArray_CHU_Fact_Deces = new byte[1024];
+					} else {
+						commonByteArray_CHU_Fact_Deces = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Fact_Deces, 0, length);
+				strReturn = new String(commonByteArray_CHU_Fact_Deces, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Fact_Deces) {
+
+				try {
+
+					int length = 0;
+
+					this.region = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.region, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("region=" + region);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row7Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class OnRowsEndStructtSortRow_1
+			implements routines.system.IPersistableRow<OnRowsEndStructtSortRow_1> {
+		final static byte[] commonByteArrayLock_CHU_Fact_Deces = new byte[0];
+		static byte[] commonByteArray_CHU_Fact_Deces = new byte[0];
+
+		public String region;
+
+		public String getRegion() {
+			return this.region;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Fact_Deces.length) {
+					if (length < 1024 && commonByteArray_CHU_Fact_Deces.length == 0) {
+						commonByteArray_CHU_Fact_Deces = new byte[1024];
+					} else {
+						commonByteArray_CHU_Fact_Deces = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Fact_Deces, 0, length);
+				strReturn = new String(commonByteArray_CHU_Fact_Deces, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Fact_Deces) {
+
+				try {
+
+					int length = 0;
+
+					this.region = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.region, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("region=" + region);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(OnRowsEndStructtSortRow_1 other) {
+
+			int returnValue = -1;
 
 			return returnValue;
 		}
@@ -4838,6 +5090,7 @@ public class Fact_Deces implements TalendJob {
 		globalMap.put("tFileInputExcel_1_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
+		String currentVirtualComponent = null;
 
 		String iterateId = "";
 
@@ -4862,73 +5115,49 @@ public class Fact_Deces implements TalendJob {
 
 				row3Struct row3 = new row3Struct();
 				row5Struct row5 = new row5Struct();
+				row7Struct row7 = new row7Struct();
 				regionStruct region = new regionStruct();
 
 				/**
-				 * [tAdvancedHash_region begin ] start
+				 * [tSortRow_1_SortOut begin ] start
 				 */
 
-				ok_Hash.put("tAdvancedHash_region", false);
-				start_Hash.put("tAdvancedHash_region", System.currentTimeMillis());
+				ok_Hash.put("tSortRow_1_SortOut", false);
+				start_Hash.put("tSortRow_1_SortOut", System.currentTimeMillis());
 
-				currentComponent = "tAdvancedHash_region";
+				currentVirtualComponent = "tSortRow_1";
 
-				if (execStat) {
-					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "region");
-				}
-
-				int tos_count_tAdvancedHash_region = 0;
-
-				// connection name:region
-				// source node:tMap_4 - inputs:(row5) outputs:(region,region) | target
-				// node:tAdvancedHash_region - inputs:(region) outputs:()
-				// linked node: tMap_5 - inputs:(region,acte) outputs:(res)
-
-				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_region = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
-
-				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<regionStruct> tHash_Lookup_region = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
-						.<regionStruct>getLookup(matchingModeEnum_region);
-
-				globalMap.put("tHash_Lookup_region", tHash_Lookup_region);
-
-				/**
-				 * [tAdvancedHash_region begin ] stop
-				 */
-
-				/**
-				 * [tMap_4 begin ] start
-				 */
-
-				ok_Hash.put("tMap_4", false);
-				start_Hash.put("tMap_4", System.currentTimeMillis());
-
-				currentComponent = "tMap_4";
+				currentComponent = "tSortRow_1_SortOut";
 
 				if (execStat) {
 					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row5");
 				}
 
-				int tos_count_tMap_4 = 0;
+				int tos_count_tSortRow_1_SortOut = 0;
 
-// ###############################
-// # Lookup's keys initialization
-// ###############################        
+				class Comparablerow5Struct extends row5Struct implements Comparable<Comparablerow5Struct> {
 
-// ###############################
-// # Vars initialization
-				class Var__tMap_4__Struct {
-					int IDRegion;
+					public int compareTo(Comparablerow5Struct other) {
+
+						if (this.region == null && other.region != null) {
+							return -1;
+
+						} else if (this.region != null && other.region == null) {
+							return 1;
+
+						} else if (this.region != null && other.region != null) {
+							if (!this.region.equals(other.region)) {
+								return this.region.compareTo(other.region);
+							}
+						}
+						return 0;
+					}
 				}
-				Var__tMap_4__Struct Var__tMap_4 = new Var__tMap_4__Struct();
-// ###############################
 
-// ###############################
-// # Outputs initialization
-				regionStruct region_tmp = new regionStruct();
-// ###############################
+				java.util.List<Comparablerow5Struct> list_tSortRow_1_SortOut = new java.util.ArrayList<Comparablerow5Struct>();
 
 				/**
-				 * [tMap_4 begin ] stop
+				 * [tSortRow_1_SortOut begin ] stop
 				 */
 
 				/**
@@ -5011,7 +5240,7 @@ public class Fact_Deces implements TalendJob {
 				currentComponent = "tUnite_1";
 
 				if (execStat) {
-					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "satisfaction", "deces");
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "deces", "satisfaction");
 				}
 
 				int tos_count_tUnite_1 = 0;
@@ -5069,7 +5298,7 @@ public class Fact_Deces implements TalendJob {
 				int tos_count_tFileInputExcel_1 = 0;
 
 				final String decryptedPassword_tFileInputExcel_1 = routines.system.PasswordEncryptUtil
-						.decryptPassword("enc:routine.encryption.key.v1:Nvpw58HrUlEhnewhG5J1oGO5RIofu909BF4yYQ==");
+						.decryptPassword("enc:routine.encryption.key.v1:hz9xWnLmyUxu5qfYXoWNCsjjdxn+BLFZeQNtZQ==");
 				String password_tFileInputExcel_1 = decryptedPassword_tFileInputExcel_1;
 				if (password_tFileInputExcel_1.isEmpty()) {
 					password_tFileInputExcel_1 = null;
@@ -5829,117 +6058,50 @@ public class Fact_Deces implements TalendJob {
 									if (row5 != null) {
 
 										/**
-										 * [tMap_4 main ] start
+										 * [tSortRow_1_SortOut main ] start
 										 */
 
-										currentComponent = "tMap_4";
+										currentVirtualComponent = "tSortRow_1";
+
+										currentComponent = "tSortRow_1_SortOut";
 
 										if (execStat) {
 											runStat.updateStatOnConnection(iterateId, 1, 1, "row5");
 										}
 
-										boolean hasCasePrimitiveKeyWithNull_tMap_4 = false;
+										Comparablerow5Struct arrayRowtSortRow_1_SortOut = new Comparablerow5Struct();
 
-										// ###############################
-										// # Input tables (lookups)
-										boolean rejectedInnerJoin_tMap_4 = false;
-										boolean mainRowRejected_tMap_4 = false;
+										arrayRowtSortRow_1_SortOut.region = row5.region;
+										list_tSortRow_1_SortOut.add(arrayRowtSortRow_1_SortOut);
 
-										// ###############################
-										{ // start of Var scope
-
-											// ###############################
-											// # Vars tables
-
-											Var__tMap_4__Struct Var = Var__tMap_4;
-											Var.IDRegion = Numeric.sequence("s1", 1, 1);// ###############################
-											// ###############################
-											// # Output tables
-
-											region = null;
-
-// # Output table : 'region'
-											region_tmp.IDRegion = Var.IDRegion;
-											region_tmp.region = row5.region;
-											region = region_tmp;
-// ###############################
-
-										} // end of Var scope
-
-										rejectedInnerJoin_tMap_4 = false;
-
-										tos_count_tMap_4++;
+										tos_count_tSortRow_1_SortOut++;
 
 										/**
-										 * [tMap_4 main ] stop
+										 * [tSortRow_1_SortOut main ] stop
 										 */
 
 										/**
-										 * [tMap_4 process_data_begin ] start
+										 * [tSortRow_1_SortOut process_data_begin ] start
 										 */
 
-										currentComponent = "tMap_4";
+										currentVirtualComponent = "tSortRow_1";
+
+										currentComponent = "tSortRow_1_SortOut";
 
 										/**
-										 * [tMap_4 process_data_begin ] stop
-										 */
-// Start of branch "region"
-										if (region != null) {
-
-											/**
-											 * [tAdvancedHash_region main ] start
-											 */
-
-											currentComponent = "tAdvancedHash_region";
-
-											if (execStat) {
-												runStat.updateStatOnConnection(iterateId, 1, 1, "region");
-											}
-
-											regionStruct region_HashRow = new regionStruct();
-
-											region_HashRow.IDRegion = region.IDRegion;
-
-											region_HashRow.region = region.region;
-
-											tHash_Lookup_region.put(region_HashRow);
-
-											tos_count_tAdvancedHash_region++;
-
-											/**
-											 * [tAdvancedHash_region main ] stop
-											 */
-
-											/**
-											 * [tAdvancedHash_region process_data_begin ] start
-											 */
-
-											currentComponent = "tAdvancedHash_region";
-
-											/**
-											 * [tAdvancedHash_region process_data_begin ] stop
-											 */
-
-											/**
-											 * [tAdvancedHash_region process_data_end ] start
-											 */
-
-											currentComponent = "tAdvancedHash_region";
-
-											/**
-											 * [tAdvancedHash_region process_data_end ] stop
-											 */
-
-										} // End of branch "region"
-
-										/**
-										 * [tMap_4 process_data_end ] start
+										 * [tSortRow_1_SortOut process_data_begin ] stop
 										 */
 
-										currentComponent = "tMap_4";
+										/**
+										 * [tSortRow_1_SortOut process_data_end ] start
+										 */
+
+										currentVirtualComponent = "tSortRow_1";
+
+										currentComponent = "tSortRow_1_SortOut";
 
 										/**
-										 * [tMap_4 process_data_end ] stop
+										 * [tSortRow_1_SortOut process_data_end ] stop
 										 */
 
 									} // End of branch "row5"
@@ -6376,9 +6538,16 @@ public class Fact_Deces implements TalendJob {
 								deces = null;
 
 // # Output table : 'deces'
-								deces_tmp.region = StringHandling.UPCASE(StringHandling
-										.CHANGE(TalendString.removeAccents(row1.Nom_Actuel_Region_Deces), "-", " "));
-								deces = deces_tmp;
+// # Filter conditions 
+								if (
+
+								(row1.Nom_Actuel_Region_Deces.equals("") == false)
+
+								) {
+									deces_tmp.region = StringHandling.UPCASE(StringHandling.CHANGE(
+											TalendString.removeAccents(row1.Nom_Actuel_Region_Deces), "-", " "));
+									deces = deces_tmp;
+								} // closing filter/reject
 // ###############################
 
 							} // end of Var scope
@@ -6496,117 +6665,50 @@ public class Fact_Deces implements TalendJob {
 								if (row5 != null) {
 
 									/**
-									 * [tMap_4 main ] start
+									 * [tSortRow_1_SortOut main ] start
 									 */
 
-									currentComponent = "tMap_4";
+									currentVirtualComponent = "tSortRow_1";
+
+									currentComponent = "tSortRow_1_SortOut";
 
 									if (execStat) {
 										runStat.updateStatOnConnection(iterateId, 1, 1, "row5");
 									}
 
-									boolean hasCasePrimitiveKeyWithNull_tMap_4 = false;
+									Comparablerow5Struct arrayRowtSortRow_1_SortOut = new Comparablerow5Struct();
 
-									// ###############################
-									// # Input tables (lookups)
-									boolean rejectedInnerJoin_tMap_4 = false;
-									boolean mainRowRejected_tMap_4 = false;
+									arrayRowtSortRow_1_SortOut.region = row5.region;
+									list_tSortRow_1_SortOut.add(arrayRowtSortRow_1_SortOut);
 
-									// ###############################
-									{ // start of Var scope
-
-										// ###############################
-										// # Vars tables
-
-										Var__tMap_4__Struct Var = Var__tMap_4;
-										Var.IDRegion = Numeric.sequence("s1", 1, 1);// ###############################
-										// ###############################
-										// # Output tables
-
-										region = null;
-
-// # Output table : 'region'
-										region_tmp.IDRegion = Var.IDRegion;
-										region_tmp.region = row5.region;
-										region = region_tmp;
-// ###############################
-
-									} // end of Var scope
-
-									rejectedInnerJoin_tMap_4 = false;
-
-									tos_count_tMap_4++;
+									tos_count_tSortRow_1_SortOut++;
 
 									/**
-									 * [tMap_4 main ] stop
+									 * [tSortRow_1_SortOut main ] stop
 									 */
 
 									/**
-									 * [tMap_4 process_data_begin ] start
+									 * [tSortRow_1_SortOut process_data_begin ] start
 									 */
 
-									currentComponent = "tMap_4";
+									currentVirtualComponent = "tSortRow_1";
+
+									currentComponent = "tSortRow_1_SortOut";
 
 									/**
-									 * [tMap_4 process_data_begin ] stop
-									 */
-// Start of branch "region"
-									if (region != null) {
-
-										/**
-										 * [tAdvancedHash_region main ] start
-										 */
-
-										currentComponent = "tAdvancedHash_region";
-
-										if (execStat) {
-											runStat.updateStatOnConnection(iterateId, 1, 1, "region");
-										}
-
-										regionStruct region_HashRow = new regionStruct();
-
-										region_HashRow.IDRegion = region.IDRegion;
-
-										region_HashRow.region = region.region;
-
-										tHash_Lookup_region.put(region_HashRow);
-
-										tos_count_tAdvancedHash_region++;
-
-										/**
-										 * [tAdvancedHash_region main ] stop
-										 */
-
-										/**
-										 * [tAdvancedHash_region process_data_begin ] start
-										 */
-
-										currentComponent = "tAdvancedHash_region";
-
-										/**
-										 * [tAdvancedHash_region process_data_begin ] stop
-										 */
-
-										/**
-										 * [tAdvancedHash_region process_data_end ] start
-										 */
-
-										currentComponent = "tAdvancedHash_region";
-
-										/**
-										 * [tAdvancedHash_region process_data_end ] stop
-										 */
-
-									} // End of branch "region"
-
-									/**
-									 * [tMap_4 process_data_end ] start
+									 * [tSortRow_1_SortOut process_data_begin ] stop
 									 */
 
-									currentComponent = "tMap_4";
+									/**
+									 * [tSortRow_1_SortOut process_data_end ] start
+									 */
+
+									currentVirtualComponent = "tSortRow_1";
+
+									currentComponent = "tSortRow_1_SortOut";
 
 									/**
-									 * [tMap_4 process_data_end ] stop
+									 * [tSortRow_1_SortOut process_data_end ] stop
 									 */
 
 								} // End of branch "row5"
@@ -6710,7 +6812,7 @@ public class Fact_Deces implements TalendJob {
 
 				globalMap.put("tUnite_1_NB_LINE", nb_line_tUnite_1);
 				if (execStat) {
-					runStat.updateStat(resourceMap, iterateId, 2, 0, "satisfaction", "deces");
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "deces", "satisfaction");
 				}
 
 				ok_Hash.put("tUnite_1", true);
@@ -6741,6 +6843,298 @@ public class Fact_Deces implements TalendJob {
 				 */
 
 				/**
+				 * [tSortRow_1_SortOut end ] start
+				 */
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortOut";
+
+				row5Struct[] array_tSortRow_1_SortOut = list_tSortRow_1_SortOut.toArray(new Comparablerow5Struct[0]);
+
+				java.util.Arrays.sort(array_tSortRow_1_SortOut);
+
+				globalMap.put("tSortRow_1", array_tSortRow_1_SortOut);
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row5");
+				}
+
+				ok_Hash.put("tSortRow_1_SortOut", true);
+				end_Hash.put("tSortRow_1_SortOut", System.currentTimeMillis());
+
+				/**
+				 * [tSortRow_1_SortOut end ] stop
+				 */
+
+				/**
+				 * [tAdvancedHash_region begin ] start
+				 */
+
+				ok_Hash.put("tAdvancedHash_region", false);
+				start_Hash.put("tAdvancedHash_region", System.currentTimeMillis());
+
+				currentComponent = "tAdvancedHash_region";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "region");
+				}
+
+				int tos_count_tAdvancedHash_region = 0;
+
+				// connection name:region
+				// source node:tMap_4 - inputs:(row7) outputs:(region,region) | target
+				// node:tAdvancedHash_region - inputs:(region) outputs:()
+				// linked node: tMap_5 - inputs:(region,acte) outputs:(res)
+
+				org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE matchingModeEnum_region = org.talend.designer.components.lookup.common.ICommonLookup.MATCHING_MODE.UNIQUE_MATCH;
+
+				org.talend.designer.components.lookup.memory.AdvancedMemoryLookup<regionStruct> tHash_Lookup_region = org.talend.designer.components.lookup.memory.AdvancedMemoryLookup
+						.<regionStruct>getLookup(matchingModeEnum_region);
+
+				globalMap.put("tHash_Lookup_region", tHash_Lookup_region);
+
+				/**
+				 * [tAdvancedHash_region begin ] stop
+				 */
+
+				/**
+				 * [tMap_4 begin ] start
+				 */
+
+				ok_Hash.put("tMap_4", false);
+				start_Hash.put("tMap_4", System.currentTimeMillis());
+
+				currentComponent = "tMap_4";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row7");
+				}
+
+				int tos_count_tMap_4 = 0;
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_4__Struct {
+					int IDRegion;
+				}
+				Var__tMap_4__Struct Var__tMap_4 = new Var__tMap_4__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				regionStruct region_tmp = new regionStruct();
+// ###############################
+
+				/**
+				 * [tMap_4 begin ] stop
+				 */
+
+				/**
+				 * [tSortRow_1_SortIn begin ] start
+				 */
+
+				ok_Hash.put("tSortRow_1_SortIn", false);
+				start_Hash.put("tSortRow_1_SortIn", System.currentTimeMillis());
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortIn";
+
+				int tos_count_tSortRow_1_SortIn = 0;
+
+				row5Struct[] array_tSortRow_1_SortIn = (row5Struct[]) globalMap.remove("tSortRow_1");
+
+				int nb_line_tSortRow_1_SortIn = 0;
+
+				row5Struct current_tSortRow_1_SortIn = null;
+
+				for (int i_tSortRow_1_SortIn = 0; i_tSortRow_1_SortIn < array_tSortRow_1_SortIn.length; i_tSortRow_1_SortIn++) {
+					current_tSortRow_1_SortIn = array_tSortRow_1_SortIn[i_tSortRow_1_SortIn];
+					row7.region = current_tSortRow_1_SortIn.region;
+					// increase number of line sorted
+					nb_line_tSortRow_1_SortIn++;
+
+					/**
+					 * [tSortRow_1_SortIn begin ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn main ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+					tos_count_tSortRow_1_SortIn++;
+
+					/**
+					 * [tSortRow_1_SortIn main ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn process_data_begin ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+					/**
+					 * [tSortRow_1_SortIn process_data_begin ] stop
+					 */
+
+					/**
+					 * [tMap_4 main ] start
+					 */
+
+					currentComponent = "tMap_4";
+
+					if (execStat) {
+						runStat.updateStatOnConnection(iterateId, 1, 1, "row7");
+					}
+
+					boolean hasCasePrimitiveKeyWithNull_tMap_4 = false;
+
+					// ###############################
+					// # Input tables (lookups)
+					boolean rejectedInnerJoin_tMap_4 = false;
+					boolean mainRowRejected_tMap_4 = false;
+
+					// ###############################
+					{ // start of Var scope
+
+						// ###############################
+						// # Vars tables
+
+						Var__tMap_4__Struct Var = Var__tMap_4;
+						Var.IDRegion = Numeric.sequence("s1", 1, 1);// ###############################
+						// ###############################
+						// # Output tables
+
+						region = null;
+
+// # Output table : 'region'
+						region_tmp.IDRegion = Var.IDRegion;
+						region_tmp.region = row7.region;
+						region = region_tmp;
+// ###############################
+
+					} // end of Var scope
+
+					rejectedInnerJoin_tMap_4 = false;
+
+					tos_count_tMap_4++;
+
+					/**
+					 * [tMap_4 main ] stop
+					 */
+
+					/**
+					 * [tMap_4 process_data_begin ] start
+					 */
+
+					currentComponent = "tMap_4";
+
+					/**
+					 * [tMap_4 process_data_begin ] stop
+					 */
+// Start of branch "region"
+					if (region != null) {
+
+						/**
+						 * [tAdvancedHash_region main ] start
+						 */
+
+						currentComponent = "tAdvancedHash_region";
+
+						if (execStat) {
+							runStat.updateStatOnConnection(iterateId, 1, 1, "region");
+						}
+
+						regionStruct region_HashRow = new regionStruct();
+
+						region_HashRow.IDRegion = region.IDRegion;
+
+						region_HashRow.region = region.region;
+
+						tHash_Lookup_region.put(region_HashRow);
+
+						tos_count_tAdvancedHash_region++;
+
+						/**
+						 * [tAdvancedHash_region main ] stop
+						 */
+
+						/**
+						 * [tAdvancedHash_region process_data_begin ] start
+						 */
+
+						currentComponent = "tAdvancedHash_region";
+
+						/**
+						 * [tAdvancedHash_region process_data_begin ] stop
+						 */
+
+						/**
+						 * [tAdvancedHash_region process_data_end ] start
+						 */
+
+						currentComponent = "tAdvancedHash_region";
+
+						/**
+						 * [tAdvancedHash_region process_data_end ] stop
+						 */
+
+					} // End of branch "region"
+
+					/**
+					 * [tMap_4 process_data_end ] start
+					 */
+
+					currentComponent = "tMap_4";
+
+					/**
+					 * [tMap_4 process_data_end ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn process_data_end ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+					/**
+					 * [tSortRow_1_SortIn process_data_end ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn end ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+				}
+
+				globalMap.put("tSortRow_1_SortIn_NB_LINE", nb_line_tSortRow_1_SortIn);
+
+				ok_Hash.put("tSortRow_1_SortIn", true);
+				end_Hash.put("tSortRow_1_SortIn", System.currentTimeMillis());
+
+				/**
+				 * [tSortRow_1_SortIn end ] stop
+				 */
+
+				/**
 				 * [tMap_4 end ] start
 				 */
 
@@ -6751,7 +7145,7 @@ public class Fact_Deces implements TalendJob {
 // ###############################      
 
 				if (execStat) {
-					runStat.updateStat(resourceMap, iterateId, 2, 0, "row5");
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row7");
 				}
 
 				ok_Hash.put("tMap_4", true);
@@ -6786,6 +7180,8 @@ public class Fact_Deces implements TalendJob {
 
 			TalendException te = new TalendException(e, currentComponent, globalMap);
 
+			te.setVirtualComponentName(currentVirtualComponent);
+
 			throw te;
 		} catch (java.lang.Error error) {
 
@@ -6793,6 +7189,9 @@ public class Fact_Deces implements TalendJob {
 
 			throw error;
 		} finally {
+
+			// free memory for "tSortRow_1_SortIn"
+			globalMap.remove("tSortRow_1");
 
 			try {
 
@@ -6854,6 +7253,30 @@ public class Fact_Deces implements TalendJob {
 
 				/**
 				 * [tUniqRow_1 finally ] stop
+				 */
+
+				/**
+				 * [tSortRow_1_SortOut finally ] start
+				 */
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortOut";
+
+				/**
+				 * [tSortRow_1_SortOut finally ] stop
+				 */
+
+				/**
+				 * [tSortRow_1_SortIn finally ] start
+				 */
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortIn";
+
+				/**
+				 * [tSortRow_1_SortIn finally ] stop
 				 */
 
 				/**
@@ -7795,6 +8218,6 @@ public class Fact_Deces implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 230880 characters generated by Talend Open Studio for Big Data on the 13 mai
- * 2022 12:27:31 CEST
+ * 241757 characters generated by Talend Open Studio for Big Data on the 17 mai
+ * 2022 11:53:30 CEST
  ************************************************************************************************/

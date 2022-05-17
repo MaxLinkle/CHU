@@ -115,6 +115,11 @@
     </dependency>
     <dependency>
       <groupId>org.talend.libraries</groupId>
+      <artifactId>external_sort</artifactId>
+      <version>6.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.talend.libraries</groupId>
       <artifactId>geronimo-stax-api_1.0_spec-1.0.1</artifactId>
       <version>6.0.0</version>
     </dependency>

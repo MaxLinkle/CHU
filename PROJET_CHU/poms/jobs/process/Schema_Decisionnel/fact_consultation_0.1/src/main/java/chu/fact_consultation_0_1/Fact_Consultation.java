@@ -419,6 +419,16 @@ public class Fact_Consultation implements TalendJob {
 		tDBInput_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tLogRow_1_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tDBInput_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_3_error(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -626,7 +636,7 @@ public class Fact_Consultation implements TalendJob {
 		globalMap.put("tHDFSConnection_1_SUBPROCESS_STATE", 1);
 	}
 
-	public static class consultationStruct implements routines.system.IPersistableRow<consultationStruct> {
+	public static class row2Struct implements routines.system.IPersistableRow<row2Struct> {
 		final static byte[] commonByteArrayLock_CHU_Fact_Consultation = new byte[0];
 		static byte[] commonByteArray_CHU_Fact_Consultation = new byte[0];
 
@@ -642,22 +652,22 @@ public class Fact_Consultation implements TalendJob {
 			return this.Id_patient;
 		}
 
-		public String Code_diag;
+		public String Code_diagnostic;
 
-		public String getCode_diag() {
-			return this.Code_diag;
+		public String getCode_diagnostic() {
+			return this.Code_diagnostic;
 		}
 
-		public String Id_prof_sante;
+		public String Id_professionnel_sante;
 
-		public String getId_prof_sante() {
-			return this.Id_prof_sante;
+		public String getId_professionnel_sante() {
+			return this.Id_professionnel_sante;
 		}
 
-		public String identifiant_organisation;
+		public String id_organisation;
 
-		public String getIdentifiant_organisation() {
-			return this.identifiant_organisation;
+		public String getId_organisation() {
+			return this.id_organisation;
 		}
 
 		private Integer readInteger(ObjectInputStream dis) throws IOException {
@@ -723,11 +733,11 @@ public class Fact_Consultation implements TalendJob {
 
 					this.Id_patient = readInteger(dis);
 
-					this.Code_diag = readString(dis);
+					this.Code_diagnostic = readString(dis);
 
-					this.Id_prof_sante = readString(dis);
+					this.Id_professionnel_sante = readString(dis);
 
-					this.identifiant_organisation = readString(dis);
+					this.id_organisation = readString(dis);
 
 				} catch (IOException e) {
 					throw new RuntimeException(e);
@@ -751,15 +761,15 @@ public class Fact_Consultation implements TalendJob {
 
 				// String
 
-				writeString(this.Code_diag, dos);
+				writeString(this.Code_diagnostic, dos);
 
 				// String
 
-				writeString(this.Id_prof_sante, dos);
+				writeString(this.Id_professionnel_sante, dos);
 
 				// String
 
-				writeString(this.identifiant_organisation, dos);
+				writeString(this.id_organisation, dos);
 
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -774,9 +784,198 @@ public class Fact_Consultation implements TalendJob {
 			sb.append("[");
 			sb.append("Num_consultation=" + String.valueOf(Num_consultation));
 			sb.append(",Id_patient=" + String.valueOf(Id_patient));
-			sb.append(",Code_diag=" + Code_diag);
-			sb.append(",Id_prof_sante=" + Id_prof_sante);
-			sb.append(",identifiant_organisation=" + identifiant_organisation);
+			sb.append(",Code_diagnostic=" + Code_diagnostic);
+			sb.append(",Id_professionnel_sante=" + Id_professionnel_sante);
+			sb.append(",id_organisation=" + id_organisation);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(row2Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class consultationStruct implements routines.system.IPersistableRow<consultationStruct> {
+		final static byte[] commonByteArrayLock_CHU_Fact_Consultation = new byte[0];
+		static byte[] commonByteArray_CHU_Fact_Consultation = new byte[0];
+
+		public int Num_consultation;
+
+		public int getNum_consultation() {
+			return this.Num_consultation;
+		}
+
+		public Integer Id_patient;
+
+		public Integer getId_patient() {
+			return this.Id_patient;
+		}
+
+		public String Code_diagnostic;
+
+		public String getCode_diagnostic() {
+			return this.Code_diagnostic;
+		}
+
+		public String Id_professionnel_sante;
+
+		public String getId_professionnel_sante() {
+			return this.Id_professionnel_sante;
+		}
+
+		public String id_organisation;
+
+		public String getId_organisation() {
+			return this.id_organisation;
+		}
+
+		private Integer readInteger(ObjectInputStream dis) throws IOException {
+			Integer intReturn;
+			int length = 0;
+			length = dis.readByte();
+			if (length == -1) {
+				intReturn = null;
+			} else {
+				intReturn = dis.readInt();
+			}
+			return intReturn;
+		}
+
+		private void writeInteger(Integer intNum, ObjectOutputStream dos) throws IOException {
+			if (intNum == null) {
+				dos.writeByte(-1);
+			} else {
+				dos.writeByte(0);
+				dos.writeInt(intNum);
+			}
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Fact_Consultation.length) {
+					if (length < 1024 && commonByteArray_CHU_Fact_Consultation.length == 0) {
+						commonByteArray_CHU_Fact_Consultation = new byte[1024];
+					} else {
+						commonByteArray_CHU_Fact_Consultation = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Fact_Consultation, 0, length);
+				strReturn = new String(commonByteArray_CHU_Fact_Consultation, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Fact_Consultation) {
+
+				try {
+
+					int length = 0;
+
+					this.Num_consultation = dis.readInt();
+
+					this.Id_patient = readInteger(dis);
+
+					this.Code_diagnostic = readString(dis);
+
+					this.Id_professionnel_sante = readString(dis);
+
+					this.id_organisation = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// int
+
+				dos.writeInt(this.Num_consultation);
+
+				// Integer
+
+				writeInteger(this.Id_patient, dos);
+
+				// String
+
+				writeString(this.Code_diagnostic, dos);
+
+				// String
+
+				writeString(this.Id_professionnel_sante, dos);
+
+				// String
+
+				writeString(this.id_organisation, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("Num_consultation=" + String.valueOf(Num_consultation));
+			sb.append(",Id_patient=" + String.valueOf(Id_patient));
+			sb.append(",Code_diagnostic=" + Code_diagnostic);
+			sb.append(",Id_professionnel_sante=" + Id_professionnel_sante);
+			sb.append(",id_organisation=" + id_organisation);
 			sb.append("]");
 
 			return sb.toString();
@@ -1191,6 +1390,168 @@ public class Fact_Consultation implements TalendJob {
 
 				row7Struct row7 = new row7Struct();
 				consultationStruct consultation = new consultationStruct();
+				consultationStruct row2 = consultation;
+
+				/**
+				 * [tLogRow_1 begin ] start
+				 */
+
+				ok_Hash.put("tLogRow_1", false);
+				start_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				currentComponent = "tLogRow_1";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row2");
+				}
+
+				int tos_count_tLogRow_1 = 0;
+
+				///////////////////////
+
+				class Util_tLogRow_1 {
+
+					String[] des_top = { ".", ".", "-", "+" };
+
+					String[] des_head = { "|=", "=|", "-", "+" };
+
+					String[] des_bottom = { "'", "'", "-", "+" };
+
+					String name = "";
+
+					java.util.List<String[]> list = new java.util.ArrayList<String[]>();
+
+					int[] colLengths = new int[5];
+
+					public void addRow(String[] row) {
+
+						for (int i = 0; i < 5; i++) {
+							if (row[i] != null) {
+								colLengths[i] = Math.max(colLengths[i], row[i].length());
+							}
+						}
+						list.add(row);
+					}
+
+					public void setTableName(String name) {
+
+						this.name = name;
+					}
+
+					public StringBuilder format() {
+
+						StringBuilder sb = new StringBuilder();
+
+						sb.append(print(des_top));
+
+						int totals = 0;
+						for (int i = 0; i < colLengths.length; i++) {
+							totals = totals + colLengths[i];
+						}
+
+						// name
+						sb.append("|");
+						int k = 0;
+						for (k = 0; k < (totals + 4 - name.length()) / 2; k++) {
+							sb.append(' ');
+						}
+						sb.append(name);
+						for (int i = 0; i < totals + 4 - name.length() - k; i++) {
+							sb.append(' ');
+						}
+						sb.append("|\n");
+
+						// head and rows
+						sb.append(print(des_head));
+						for (int i = 0; i < list.size(); i++) {
+
+							String[] row = list.get(i);
+
+							java.util.Formatter formatter = new java.util.Formatter(new StringBuilder());
+
+							StringBuilder sbformat = new StringBuilder();
+							sbformat.append("|%1$-");
+							sbformat.append(colLengths[0]);
+							sbformat.append("s");
+
+							sbformat.append("|%2$-");
+							sbformat.append(colLengths[1]);
+							sbformat.append("s");
+
+							sbformat.append("|%3$-");
+							sbformat.append(colLengths[2]);
+							sbformat.append("s");
+
+							sbformat.append("|%4$-");
+							sbformat.append(colLengths[3]);
+							sbformat.append("s");
+
+							sbformat.append("|%5$-");
+							sbformat.append(colLengths[4]);
+							sbformat.append("s");
+
+							sbformat.append("|\n");
+
+							formatter.format(sbformat.toString(), (Object[]) row);
+
+							sb.append(formatter.toString());
+							if (i == 0)
+								sb.append(print(des_head)); // print the head
+						}
+
+						// end
+						sb.append(print(des_bottom));
+						return sb;
+					}
+
+					private StringBuilder print(String[] fillChars) {
+						StringBuilder sb = new StringBuilder();
+						// first column
+						sb.append(fillChars[0]);
+						for (int i = 0; i < colLengths[0] - fillChars[0].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+
+						for (int i = 0; i < colLengths[1] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+						for (int i = 0; i < colLengths[2] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+						for (int i = 0; i < colLengths[3] - fillChars[3].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[3]);
+
+						// last column
+						for (int i = 0; i < colLengths[4] - fillChars[1].length() + 1; i++) {
+							sb.append(fillChars[2]);
+						}
+						sb.append(fillChars[1]);
+						sb.append("\n");
+						return sb;
+					}
+
+					public boolean isTableEmpty() {
+						if (list.size() > 1)
+							return false;
+						return true;
+					}
+				}
+				Util_tLogRow_1 util_tLogRow_1 = new Util_tLogRow_1();
+				util_tLogRow_1.setTableName("tLogRow_1");
+				util_tLogRow_1.addRow(new String[] { "Num_consultation", "Id_patient", "Code_diagnostic",
+						"Id_professionnel_sante", "id_organisation", });
+				StringBuilder strBuffer_tLogRow_1 = null;
+				int nb_line_tLogRow_1 = 0;
+///////////////////////    			
+
+				/**
+				 * [tLogRow_1 begin ] stop
+				 */
 
 				/**
 				 * [tHDFSOutput_1 begin ] start
@@ -1470,9 +1831,9 @@ public class Fact_Consultation implements TalendJob {
 // # Output table : 'consultation'
 								consultation_tmp.Num_consultation = row7.Num_consultation;
 								consultation_tmp.Id_patient = row7.Id_patient;
-								consultation_tmp.Code_diag = row7.Code_diag;
-								consultation_tmp.Id_prof_sante = row7.Id_prof_sante;
-								consultation_tmp.identifiant_organisation = row1.identifiant_organisation;
+								consultation_tmp.Code_diagnostic = row7.Code_diag;
+								consultation_tmp.Id_professionnel_sante = row7.Id_prof_sante;
+								consultation_tmp.id_organisation = row1.identifiant_organisation;
 								consultation = consultation_tmp;
 // ###############################
 
@@ -1530,11 +1891,11 @@ public class Fact_Consultation implements TalendJob {
 
 								sb_tHDFSOutput_1.append(";");
 
-								if (consultation.Code_diag != null) {
+								if (consultation.Code_diagnostic != null) {
 
 									sb_tHDFSOutput_1.append(
 
-											consultation.Code_diag
+											consultation.Code_diagnostic
 
 									);
 
@@ -1542,11 +1903,11 @@ public class Fact_Consultation implements TalendJob {
 
 								sb_tHDFSOutput_1.append(";");
 
-								if (consultation.Id_prof_sante != null) {
+								if (consultation.Id_professionnel_sante != null) {
 
 									sb_tHDFSOutput_1.append(
 
-											consultation.Id_prof_sante
+											consultation.Id_professionnel_sante
 
 									);
 
@@ -1554,11 +1915,11 @@ public class Fact_Consultation implements TalendJob {
 
 								sb_tHDFSOutput_1.append(";");
 
-								if (consultation.identifiant_organisation != null) {
+								if (consultation.id_organisation != null) {
 
 									sb_tHDFSOutput_1.append(
 
-											consultation.identifiant_organisation
+											consultation.id_organisation
 
 									);
 
@@ -1569,6 +1930,8 @@ public class Fact_Consultation implements TalendJob {
 								outtHDFSOutput_1.write(sb_tHDFSOutput_1.toString());
 
 								nb_line_tHDFSOutput_1++;
+
+								row2 = consultation;
 
 								tos_count_tHDFSOutput_1++;
 
@@ -1584,6 +1947,76 @@ public class Fact_Consultation implements TalendJob {
 
 								/**
 								 * [tHDFSOutput_1 process_data_begin ] stop
+								 */
+
+								/**
+								 * [tLogRow_1 main ] start
+								 */
+
+								currentComponent = "tLogRow_1";
+
+								if (execStat) {
+									runStat.updateStatOnConnection(iterateId, 1, 1, "row2");
+								}
+
+///////////////////////		
+
+								String[] row_tLogRow_1 = new String[5];
+
+								row_tLogRow_1[0] = String.valueOf(row2.Num_consultation);
+
+								if (row2.Id_patient != null) { //
+									row_tLogRow_1[1] = String.valueOf(row2.Id_patient);
+
+								} //
+
+								if (row2.Code_diagnostic != null) { //
+									row_tLogRow_1[2] = String.valueOf(row2.Code_diagnostic);
+
+								} //
+
+								if (row2.Id_professionnel_sante != null) { //
+									row_tLogRow_1[3] = String.valueOf(row2.Id_professionnel_sante);
+
+								} //
+
+								if (row2.id_organisation != null) { //
+									row_tLogRow_1[4] = String.valueOf(row2.id_organisation);
+
+								} //
+
+								util_tLogRow_1.addRow(row_tLogRow_1);
+								nb_line_tLogRow_1++;
+//////
+
+//////                    
+
+///////////////////////    			
+
+								tos_count_tLogRow_1++;
+
+								/**
+								 * [tLogRow_1 main ] stop
+								 */
+
+								/**
+								 * [tLogRow_1 process_data_begin ] start
+								 */
+
+								currentComponent = "tLogRow_1";
+
+								/**
+								 * [tLogRow_1 process_data_begin ] stop
+								 */
+
+								/**
+								 * [tLogRow_1 process_data_end ] start
+								 */
+
+								currentComponent = "tLogRow_1";
+
+								/**
+								 * [tLogRow_1 process_data_end ] stop
 								 */
 
 								/**
@@ -1705,6 +2138,40 @@ public class Fact_Consultation implements TalendJob {
 				 * [tHDFSOutput_1 end ] stop
 				 */
 
+				/**
+				 * [tLogRow_1 end ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+//////
+
+				java.io.PrintStream consoleOut_tLogRow_1 = null;
+				if (globalMap.get("tLogRow_CONSOLE") != null) {
+					consoleOut_tLogRow_1 = (java.io.PrintStream) globalMap.get("tLogRow_CONSOLE");
+				} else {
+					consoleOut_tLogRow_1 = new java.io.PrintStream(new java.io.BufferedOutputStream(System.out));
+					globalMap.put("tLogRow_CONSOLE", consoleOut_tLogRow_1);
+				}
+
+				consoleOut_tLogRow_1.println(util_tLogRow_1.format().toString());
+				consoleOut_tLogRow_1.flush();
+//////
+				globalMap.put("tLogRow_1_NB_LINE", nb_line_tLogRow_1);
+
+///////////////////////    			
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row2");
+				}
+
+				ok_Hash.put("tLogRow_1", true);
+				end_Hash.put("tLogRow_1", System.currentTimeMillis());
+
+				/**
+				 * [tLogRow_1 end ] stop
+				 */
+
 			} // end the resume
 
 		} catch (java.lang.Exception e) {
@@ -1752,6 +2219,16 @@ public class Fact_Consultation implements TalendJob {
 
 				/**
 				 * [tHDFSOutput_1 finally ] stop
+				 */
+
+				/**
+				 * [tLogRow_1 finally ] start
+				 */
+
+				currentComponent = "tLogRow_1";
+
+				/**
+				 * [tLogRow_1 finally ] stop
 				 */
 
 			} catch (java.lang.Exception e) {
@@ -3148,6 +3625,6 @@ public class Fact_Consultation implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 97623 characters generated by Talend Open Studio for Big Data on the 13 mai
- * 2022 13:23:32 CEST
+ * 112160 characters generated by Talend Open Studio for Big Data on the 17 mai
+ * 2022 10:22:03 CEST
  ************************************************************************************************/

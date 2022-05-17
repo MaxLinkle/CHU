@@ -405,6 +405,23 @@ public class Dim_Region implements TalendJob {
 		tHadoopConfManager_tHDFSOutput_1_onSubJobError(exception, errorComponent, globalMap);
 	}
 
+	public void tSortRow_1_SortOut_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		tSortRow_1_SortIn_error(exception, errorComponent, globalMap);
+
+	}
+
+	public void tSortRow_1_SortIn_error(Exception exception, String errorComponent,
+			final java.util.Map<String, Object> globalMap) throws TalendException {
+
+		end_Hash.put(errorComponent, System.currentTimeMillis());
+
+		status = "failure";
+
+		tFileInputDelimited_1_onSubJobError(exception, errorComponent, globalMap);
+	}
+
 	public void tFileInputDelimited_1_onSubJobError(Exception exception, String errorComponent,
 			final java.util.Map<String, Object> globalMap) throws TalendException {
 
@@ -441,11 +458,134 @@ public class Dim_Region implements TalendJob {
 		final static byte[] commonByteArrayLock_CHU_Dim_Region = new byte[0];
 		static byte[] commonByteArray_CHU_Dim_Region = new byte[0];
 
-		public int IDRegion;
+		public int id_region;
 
-		public int getIDRegion() {
-			return this.IDRegion;
+		public int getId_region() {
+			return this.id_region;
 		}
+
+		public String nom_region;
+
+		public String getNom_region() {
+			return this.nom_region;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Dim_Region.length) {
+					if (length < 1024 && commonByteArray_CHU_Dim_Region.length == 0) {
+						commonByteArray_CHU_Dim_Region = new byte[1024];
+					} else {
+						commonByteArray_CHU_Dim_Region = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Dim_Region, 0, length);
+				strReturn = new String(commonByteArray_CHU_Dim_Region, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Dim_Region) {
+
+				try {
+
+					int length = 0;
+
+					this.id_region = dis.readInt();
+
+					this.nom_region = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// int
+
+				dos.writeInt(this.id_region);
+
+				// String
+
+				writeString(this.nom_region, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("id_region=" + String.valueOf(id_region));
+			sb.append(",nom_region=" + nom_region);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(regionStruct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class row5Struct implements routines.system.IPersistableRow<row5Struct> {
+		final static byte[] commonByteArrayLock_CHU_Dim_Region = new byte[0];
+		static byte[] commonByteArray_CHU_Dim_Region = new byte[0];
 
 		public String region;
 
@@ -491,8 +631,6 @@ public class Dim_Region implements TalendJob {
 
 					int length = 0;
 
-					this.IDRegion = dis.readInt();
-
 					this.region = readString(dis);
 
 				} catch (IOException e) {
@@ -506,10 +644,6 @@ public class Dim_Region implements TalendJob {
 
 		public void writeData(ObjectOutputStream dos) {
 			try {
-
-				// int
-
-				dos.writeInt(this.IDRegion);
 
 				// String
 
@@ -526,8 +660,7 @@ public class Dim_Region implements TalendJob {
 			StringBuilder sb = new StringBuilder();
 			sb.append(super.toString());
 			sb.append("[");
-			sb.append("IDRegion=" + String.valueOf(IDRegion));
-			sb.append(",region=" + region);
+			sb.append("region=" + region);
 			sb.append("]");
 
 			return sb.toString();
@@ -536,7 +669,124 @@ public class Dim_Region implements TalendJob {
 		/**
 		 * Compare keys
 		 */
-		public int compareTo(regionStruct other) {
+		public int compareTo(row5Struct other) {
+
+			int returnValue = -1;
+
+			return returnValue;
+		}
+
+		private int checkNullsAndCompare(Object object1, Object object2) {
+			int returnValue = 0;
+			if (object1 instanceof Comparable && object2 instanceof Comparable) {
+				returnValue = ((Comparable) object1).compareTo(object2);
+			} else if (object1 != null && object2 != null) {
+				returnValue = compareStrings(object1.toString(), object2.toString());
+			} else if (object1 == null && object2 != null) {
+				returnValue = 1;
+			} else if (object1 != null && object2 == null) {
+				returnValue = -1;
+			} else {
+				returnValue = 0;
+			}
+
+			return returnValue;
+		}
+
+		private int compareStrings(String string1, String string2) {
+			return string1.compareTo(string2);
+		}
+
+	}
+
+	public static class OnRowsEndStructtSortRow_1
+			implements routines.system.IPersistableRow<OnRowsEndStructtSortRow_1> {
+		final static byte[] commonByteArrayLock_CHU_Dim_Region = new byte[0];
+		static byte[] commonByteArray_CHU_Dim_Region = new byte[0];
+
+		public String region;
+
+		public String getRegion() {
+			return this.region;
+		}
+
+		private String readString(ObjectInputStream dis) throws IOException {
+			String strReturn = null;
+			int length = 0;
+			length = dis.readInt();
+			if (length == -1) {
+				strReturn = null;
+			} else {
+				if (length > commonByteArray_CHU_Dim_Region.length) {
+					if (length < 1024 && commonByteArray_CHU_Dim_Region.length == 0) {
+						commonByteArray_CHU_Dim_Region = new byte[1024];
+					} else {
+						commonByteArray_CHU_Dim_Region = new byte[2 * length];
+					}
+				}
+				dis.readFully(commonByteArray_CHU_Dim_Region, 0, length);
+				strReturn = new String(commonByteArray_CHU_Dim_Region, 0, length, utf8Charset);
+			}
+			return strReturn;
+		}
+
+		private void writeString(String str, ObjectOutputStream dos) throws IOException {
+			if (str == null) {
+				dos.writeInt(-1);
+			} else {
+				byte[] byteArray = str.getBytes(utf8Charset);
+				dos.writeInt(byteArray.length);
+				dos.write(byteArray);
+			}
+		}
+
+		public void readData(ObjectInputStream dis) {
+
+			synchronized (commonByteArrayLock_CHU_Dim_Region) {
+
+				try {
+
+					int length = 0;
+
+					this.region = readString(dis);
+
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+
+				}
+
+			}
+
+		}
+
+		public void writeData(ObjectOutputStream dos) {
+			try {
+
+				// String
+
+				writeString(this.region, dos);
+
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		public String toString() {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append(super.toString());
+			sb.append("[");
+			sb.append("region=" + region);
+			sb.append("]");
+
+			return sb.toString();
+		}
+
+		/**
+		 * Compare keys
+		 */
+		public int compareTo(OnRowsEndStructtSortRow_1 other) {
 
 			int returnValue = -1;
 
@@ -2020,6 +2270,7 @@ public class Dim_Region implements TalendJob {
 		globalMap.put("tFileInputDelimited_1_SUBPROCESS_STATE", 0);
 
 		final boolean execStat = this.execStat;
+		String currentVirtualComponent = null;
 
 		String iterateId = "";
 
@@ -2044,92 +2295,49 @@ public class Dim_Region implements TalendJob {
 
 				row1Struct row1 = new row1Struct();
 				row4Struct row4 = new row4Struct();
+				row5Struct row5 = new row5Struct();
 				regionStruct region = new regionStruct();
 
 				/**
-				 * [tHDFSOutput_1 begin ] start
+				 * [tSortRow_1_SortOut begin ] start
 				 */
 
-				ok_Hash.put("tHDFSOutput_1", false);
-				start_Hash.put("tHDFSOutput_1", System.currentTimeMillis());
+				ok_Hash.put("tSortRow_1_SortOut", false);
+				start_Hash.put("tSortRow_1_SortOut", System.currentTimeMillis());
 
-				currentComponent = "tHDFSOutput_1";
+				currentVirtualComponent = "tSortRow_1";
 
-				if (execStat) {
-					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "region");
-				}
-
-				int tos_count_tHDFSOutput_1 = 0;
-
-				String username_tHDFSOutput_1 = "";
-				org.apache.hadoop.fs.FileSystem fs_tHDFSOutput_1 = null;
-				org.apache.hadoop.conf.Configuration conf_tHDFSOutput_1 = new org.apache.hadoop.conf.Configuration();
-
-				conf_tHDFSOutput_1.set("fs.default.name", context.HDFS_Cluster_NameNodeUri);
-
-				conf_tHDFSOutput_1.set("dfs.client.use.datanode.hostname", "true");
-
-				org.apache.hadoop.security.UserGroupInformation.setConfiguration(conf_tHDFSOutput_1);
-				username_tHDFSOutput_1 = "cloudera";
-				if (username_tHDFSOutput_1 == null || "".equals(username_tHDFSOutput_1)) {
-					fs_tHDFSOutput_1 = org.apache.hadoop.fs.FileSystem.get(conf_tHDFSOutput_1);
-				} else {
-					System.setProperty("HADOOP_USER_NAME", username_tHDFSOutput_1);
-					fs_tHDFSOutput_1 = org.apache.hadoop.fs.FileSystem.get(
-							new java.net.URI(conf_tHDFSOutput_1.get("fs.default.name")), conf_tHDFSOutput_1,
-							username_tHDFSOutput_1);
-				}
-
-				org.apache.hadoop.fs.Path path_tHDFSOutput_1 = new org.apache.hadoop.fs.Path(
-						"/user/cloudera/CHU/Dim_Region/Dim_Region.txt");
-				int nb_line_tHDFSOutput_1 = 0;
-
-				org.apache.hadoop.fs.FSDataOutputStream fsDataOutputStream_tHDFSOutput_1 = null;
-
-				fsDataOutputStream_tHDFSOutput_1 = fs_tHDFSOutput_1.create(path_tHDFSOutput_1, true);
-
-				java.io.Writer outtHDFSOutput_1 = null;
-				outtHDFSOutput_1 = new java.io.BufferedWriter(
-						new java.io.OutputStreamWriter(fsDataOutputStream_tHDFSOutput_1));
-
-				/**
-				 * [tHDFSOutput_1 begin ] stop
-				 */
-
-				/**
-				 * [tMap_3 begin ] start
-				 */
-
-				ok_Hash.put("tMap_3", false);
-				start_Hash.put("tMap_3", System.currentTimeMillis());
-
-				currentComponent = "tMap_3";
+				currentComponent = "tSortRow_1_SortOut";
 
 				if (execStat) {
 					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row4");
 				}
 
-				int tos_count_tMap_3 = 0;
+				int tos_count_tSortRow_1_SortOut = 0;
 
-// ###############################
-// # Lookup's keys initialization
-// ###############################        
+				class Comparablerow4Struct extends row4Struct implements Comparable<Comparablerow4Struct> {
 
-// ###############################
-// # Vars initialization
-				class Var__tMap_3__Struct {
-					int var1;
+					public int compareTo(Comparablerow4Struct other) {
+
+						if (this.region == null && other.region != null) {
+							return -1;
+
+						} else if (this.region != null && other.region == null) {
+							return 1;
+
+						} else if (this.region != null && other.region != null) {
+							if (!this.region.equals(other.region)) {
+								return this.region.compareTo(other.region);
+							}
+						}
+						return 0;
+					}
 				}
-				Var__tMap_3__Struct Var__tMap_3 = new Var__tMap_3__Struct();
-// ###############################
 
-// ###############################
-// # Outputs initialization
-				regionStruct region_tmp = new regionStruct();
-// ###############################
+				java.util.List<Comparablerow4Struct> list_tSortRow_1_SortOut = new java.util.ArrayList<Comparablerow4Struct>();
 
 				/**
-				 * [tMap_3 begin ] stop
+				 * [tSortRow_1_SortOut begin ] stop
 				 */
 
 				/**
@@ -2563,9 +2771,16 @@ public class Dim_Region implements TalendJob {
 								deces = null;
 
 // # Output table : 'deces'
-								deces_tmp.region = StringHandling.UPCASE(StringHandling
-										.CHANGE(TalendString.removeAccents(row2.Nom_Actuel_Region_Deces), "-", " "));
-								deces = deces_tmp;
+// # Filter conditions 
+								if (
+
+								(row2.Nom_Actuel_Region_Deces.equals("") == false)
+
+								) {
+									deces_tmp.region = StringHandling.UPCASE(StringHandling.CHANGE(
+											TalendString.removeAccents(row2.Nom_Actuel_Region_Deces), "-", " "));
+									deces = deces_tmp;
+								} // closing filter/reject
 // ###############################
 
 							} // end of Var scope
@@ -2683,142 +2898,50 @@ public class Dim_Region implements TalendJob {
 								if (row4 != null) {
 
 									/**
-									 * [tMap_3 main ] start
+									 * [tSortRow_1_SortOut main ] start
 									 */
 
-									currentComponent = "tMap_3";
+									currentVirtualComponent = "tSortRow_1";
+
+									currentComponent = "tSortRow_1_SortOut";
 
 									if (execStat) {
 										runStat.updateStatOnConnection(iterateId, 1, 1, "row4");
 									}
 
-									boolean hasCasePrimitiveKeyWithNull_tMap_3 = false;
+									Comparablerow4Struct arrayRowtSortRow_1_SortOut = new Comparablerow4Struct();
 
-									// ###############################
-									// # Input tables (lookups)
-									boolean rejectedInnerJoin_tMap_3 = false;
-									boolean mainRowRejected_tMap_3 = false;
+									arrayRowtSortRow_1_SortOut.region = row4.region;
+									list_tSortRow_1_SortOut.add(arrayRowtSortRow_1_SortOut);
 
-									// ###############################
-									{ // start of Var scope
-
-										// ###############################
-										// # Vars tables
-
-										Var__tMap_3__Struct Var = Var__tMap_3;
-										Var.var1 = Numeric.sequence("ok", 1, 1);// ###############################
-										// ###############################
-										// # Output tables
-
-										region = null;
-
-// # Output table : 'region'
-// # Filter conditions 
-										if (
-
-										(row4.region.equals("") == false)
-
-										) {
-											region_tmp.IDRegion = Var.var1;
-											region_tmp.region = row4.region;
-											region = region_tmp;
-										} // closing filter/reject
-// ###############################
-
-									} // end of Var scope
-
-									rejectedInnerJoin_tMap_3 = false;
-
-									tos_count_tMap_3++;
+									tos_count_tSortRow_1_SortOut++;
 
 									/**
-									 * [tMap_3 main ] stop
+									 * [tSortRow_1_SortOut main ] stop
 									 */
 
 									/**
-									 * [tMap_3 process_data_begin ] start
+									 * [tSortRow_1_SortOut process_data_begin ] start
 									 */
 
-									currentComponent = "tMap_3";
+									currentVirtualComponent = "tSortRow_1";
+
+									currentComponent = "tSortRow_1_SortOut";
 
 									/**
-									 * [tMap_3 process_data_begin ] stop
-									 */
-// Start of branch "region"
-									if (region != null) {
-
-										/**
-										 * [tHDFSOutput_1 main ] start
-										 */
-
-										currentComponent = "tHDFSOutput_1";
-
-										if (execStat) {
-											runStat.updateStatOnConnection(iterateId, 1, 1, "region");
-										}
-
-										StringBuilder sb_tHDFSOutput_1 = new StringBuilder();
-
-										sb_tHDFSOutput_1.append(
-
-												region.IDRegion
-
-										);
-
-										sb_tHDFSOutput_1.append(";");
-
-										if (region.region != null) {
-
-											sb_tHDFSOutput_1.append(
-
-													region.region
-
-											);
-
-										}
-
-										sb_tHDFSOutput_1.append("\n");
-
-										outtHDFSOutput_1.write(sb_tHDFSOutput_1.toString());
-
-										nb_line_tHDFSOutput_1++;
-
-										tos_count_tHDFSOutput_1++;
-
-										/**
-										 * [tHDFSOutput_1 main ] stop
-										 */
-
-										/**
-										 * [tHDFSOutput_1 process_data_begin ] start
-										 */
-
-										currentComponent = "tHDFSOutput_1";
-
-										/**
-										 * [tHDFSOutput_1 process_data_begin ] stop
-										 */
-
-										/**
-										 * [tHDFSOutput_1 process_data_end ] start
-										 */
-
-										currentComponent = "tHDFSOutput_1";
-
-										/**
-										 * [tHDFSOutput_1 process_data_end ] stop
-										 */
-
-									} // End of branch "region"
-
-									/**
-									 * [tMap_3 process_data_end ] start
+									 * [tSortRow_1_SortOut process_data_begin ] stop
 									 */
 
-									currentComponent = "tMap_3";
+									/**
+									 * [tSortRow_1_SortOut process_data_end ] start
+									 */
+
+									currentVirtualComponent = "tSortRow_1";
+
+									currentComponent = "tSortRow_1_SortOut";
 
 									/**
-									 * [tMap_3 process_data_end ] stop
+									 * [tSortRow_1_SortOut process_data_end ] stop
 									 */
 
 								} // End of branch "row4"
@@ -2961,7 +3084,7 @@ public class Dim_Region implements TalendJob {
 				int tos_count_tFileInputExcel_1 = 0;
 
 				final String decryptedPassword_tFileInputExcel_1 = routines.system.PasswordEncryptUtil
-						.decryptPassword("enc:routine.encryption.key.v1:F05eX58ad1vpHkYZRPhD4Sw0M79Kd93CZGE0xA==");
+						.decryptPassword("enc:routine.encryption.key.v1:O7uZfVtqPpPa2sf7ut1aZbNyEqBhrYWjEgqRcA==");
 				String password_tFileInputExcel_1 = decryptedPassword_tFileInputExcel_1;
 				if (password_tFileInputExcel_1.isEmpty()) {
 					password_tFileInputExcel_1 = null;
@@ -3596,7 +3719,7 @@ public class Dim_Region implements TalendJob {
 // # Filter conditions 
 									if (
 
-									("PACA".equals(row3.region) == false)
+									(row3.region.equals("") == false) && ("PACA".equals(row3.region) == false)
 
 									) {
 										satisfaction_tmp.region = StringHandling.UPCASE(StringHandling
@@ -3720,142 +3843,50 @@ public class Dim_Region implements TalendJob {
 									if (row4 != null) {
 
 										/**
-										 * [tMap_3 main ] start
+										 * [tSortRow_1_SortOut main ] start
 										 */
 
-										currentComponent = "tMap_3";
+										currentVirtualComponent = "tSortRow_1";
+
+										currentComponent = "tSortRow_1_SortOut";
 
 										if (execStat) {
 											runStat.updateStatOnConnection(iterateId, 1, 1, "row4");
 										}
 
-										boolean hasCasePrimitiveKeyWithNull_tMap_3 = false;
+										Comparablerow4Struct arrayRowtSortRow_1_SortOut = new Comparablerow4Struct();
 
-										// ###############################
-										// # Input tables (lookups)
-										boolean rejectedInnerJoin_tMap_3 = false;
-										boolean mainRowRejected_tMap_3 = false;
+										arrayRowtSortRow_1_SortOut.region = row4.region;
+										list_tSortRow_1_SortOut.add(arrayRowtSortRow_1_SortOut);
 
-										// ###############################
-										{ // start of Var scope
-
-											// ###############################
-											// # Vars tables
-
-											Var__tMap_3__Struct Var = Var__tMap_3;
-											Var.var1 = Numeric.sequence("ok", 1, 1);// ###############################
-											// ###############################
-											// # Output tables
-
-											region = null;
-
-// # Output table : 'region'
-// # Filter conditions 
-											if (
-
-											(row4.region.equals("") == false)
-
-											) {
-												region_tmp.IDRegion = Var.var1;
-												region_tmp.region = row4.region;
-												region = region_tmp;
-											} // closing filter/reject
-// ###############################
-
-										} // end of Var scope
-
-										rejectedInnerJoin_tMap_3 = false;
-
-										tos_count_tMap_3++;
+										tos_count_tSortRow_1_SortOut++;
 
 										/**
-										 * [tMap_3 main ] stop
+										 * [tSortRow_1_SortOut main ] stop
 										 */
 
 										/**
-										 * [tMap_3 process_data_begin ] start
+										 * [tSortRow_1_SortOut process_data_begin ] start
 										 */
 
-										currentComponent = "tMap_3";
+										currentVirtualComponent = "tSortRow_1";
+
+										currentComponent = "tSortRow_1_SortOut";
 
 										/**
-										 * [tMap_3 process_data_begin ] stop
-										 */
-// Start of branch "region"
-										if (region != null) {
-
-											/**
-											 * [tHDFSOutput_1 main ] start
-											 */
-
-											currentComponent = "tHDFSOutput_1";
-
-											if (execStat) {
-												runStat.updateStatOnConnection(iterateId, 1, 1, "region");
-											}
-
-											StringBuilder sb_tHDFSOutput_1 = new StringBuilder();
-
-											sb_tHDFSOutput_1.append(
-
-													region.IDRegion
-
-											);
-
-											sb_tHDFSOutput_1.append(";");
-
-											if (region.region != null) {
-
-												sb_tHDFSOutput_1.append(
-
-														region.region
-
-												);
-
-											}
-
-											sb_tHDFSOutput_1.append("\n");
-
-											outtHDFSOutput_1.write(sb_tHDFSOutput_1.toString());
-
-											nb_line_tHDFSOutput_1++;
-
-											tos_count_tHDFSOutput_1++;
-
-											/**
-											 * [tHDFSOutput_1 main ] stop
-											 */
-
-											/**
-											 * [tHDFSOutput_1 process_data_begin ] start
-											 */
-
-											currentComponent = "tHDFSOutput_1";
-
-											/**
-											 * [tHDFSOutput_1 process_data_begin ] stop
-											 */
-
-											/**
-											 * [tHDFSOutput_1 process_data_end ] start
-											 */
-
-											currentComponent = "tHDFSOutput_1";
-
-											/**
-											 * [tHDFSOutput_1 process_data_end ] stop
-											 */
-
-										} // End of branch "region"
-
-										/**
-										 * [tMap_3 process_data_end ] start
+										 * [tSortRow_1_SortOut process_data_begin ] stop
 										 */
 
-										currentComponent = "tMap_3";
+										/**
+										 * [tSortRow_1_SortOut process_data_end ] start
+										 */
+
+										currentVirtualComponent = "tSortRow_1";
+
+										currentComponent = "tSortRow_1_SortOut";
 
 										/**
-										 * [tMap_3 process_data_end ] stop
+										 * [tSortRow_1_SortOut process_data_end ] stop
 										 */
 
 									} // End of branch "row4"
@@ -3991,6 +4022,335 @@ public class Dim_Region implements TalendJob {
 				 */
 
 				/**
+				 * [tSortRow_1_SortOut end ] start
+				 */
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortOut";
+
+				row4Struct[] array_tSortRow_1_SortOut = list_tSortRow_1_SortOut.toArray(new Comparablerow4Struct[0]);
+
+				java.util.Arrays.sort(array_tSortRow_1_SortOut);
+
+				globalMap.put("tSortRow_1", array_tSortRow_1_SortOut);
+
+				if (execStat) {
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row4");
+				}
+
+				ok_Hash.put("tSortRow_1_SortOut", true);
+				end_Hash.put("tSortRow_1_SortOut", System.currentTimeMillis());
+
+				/**
+				 * [tSortRow_1_SortOut end ] stop
+				 */
+
+				/**
+				 * [tHDFSOutput_1 begin ] start
+				 */
+
+				ok_Hash.put("tHDFSOutput_1", false);
+				start_Hash.put("tHDFSOutput_1", System.currentTimeMillis());
+
+				currentComponent = "tHDFSOutput_1";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "region");
+				}
+
+				int tos_count_tHDFSOutput_1 = 0;
+
+				String username_tHDFSOutput_1 = "";
+				org.apache.hadoop.fs.FileSystem fs_tHDFSOutput_1 = null;
+				org.apache.hadoop.conf.Configuration conf_tHDFSOutput_1 = new org.apache.hadoop.conf.Configuration();
+
+				conf_tHDFSOutput_1.set("fs.default.name", context.HDFS_Cluster_NameNodeUri);
+
+				conf_tHDFSOutput_1.set("dfs.client.use.datanode.hostname", "true");
+
+				org.apache.hadoop.security.UserGroupInformation.setConfiguration(conf_tHDFSOutput_1);
+				username_tHDFSOutput_1 = "cloudera";
+				if (username_tHDFSOutput_1 == null || "".equals(username_tHDFSOutput_1)) {
+					fs_tHDFSOutput_1 = org.apache.hadoop.fs.FileSystem.get(conf_tHDFSOutput_1);
+				} else {
+					System.setProperty("HADOOP_USER_NAME", username_tHDFSOutput_1);
+					fs_tHDFSOutput_1 = org.apache.hadoop.fs.FileSystem.get(
+							new java.net.URI(conf_tHDFSOutput_1.get("fs.default.name")), conf_tHDFSOutput_1,
+							username_tHDFSOutput_1);
+				}
+
+				org.apache.hadoop.fs.Path path_tHDFSOutput_1 = new org.apache.hadoop.fs.Path(
+						"/user/cloudera/CHU/Dim_Region/Dim_Region.txt");
+				int nb_line_tHDFSOutput_1 = 0;
+
+				org.apache.hadoop.fs.FSDataOutputStream fsDataOutputStream_tHDFSOutput_1 = null;
+
+				fsDataOutputStream_tHDFSOutput_1 = fs_tHDFSOutput_1.create(path_tHDFSOutput_1, true);
+
+				java.io.Writer outtHDFSOutput_1 = null;
+				outtHDFSOutput_1 = new java.io.BufferedWriter(
+						new java.io.OutputStreamWriter(fsDataOutputStream_tHDFSOutput_1));
+
+				/**
+				 * [tHDFSOutput_1 begin ] stop
+				 */
+
+				/**
+				 * [tMap_3 begin ] start
+				 */
+
+				ok_Hash.put("tMap_3", false);
+				start_Hash.put("tMap_3", System.currentTimeMillis());
+
+				currentComponent = "tMap_3";
+
+				if (execStat) {
+					runStat.updateStatOnConnection(resourceMap, iterateId, 0, 0, "row5");
+				}
+
+				int tos_count_tMap_3 = 0;
+
+// ###############################
+// # Lookup's keys initialization
+// ###############################        
+
+// ###############################
+// # Vars initialization
+				class Var__tMap_3__Struct {
+					int var1;
+				}
+				Var__tMap_3__Struct Var__tMap_3 = new Var__tMap_3__Struct();
+// ###############################
+
+// ###############################
+// # Outputs initialization
+				regionStruct region_tmp = new regionStruct();
+// ###############################
+
+				/**
+				 * [tMap_3 begin ] stop
+				 */
+
+				/**
+				 * [tSortRow_1_SortIn begin ] start
+				 */
+
+				ok_Hash.put("tSortRow_1_SortIn", false);
+				start_Hash.put("tSortRow_1_SortIn", System.currentTimeMillis());
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortIn";
+
+				int tos_count_tSortRow_1_SortIn = 0;
+
+				row4Struct[] array_tSortRow_1_SortIn = (row4Struct[]) globalMap.remove("tSortRow_1");
+
+				int nb_line_tSortRow_1_SortIn = 0;
+
+				row4Struct current_tSortRow_1_SortIn = null;
+
+				for (int i_tSortRow_1_SortIn = 0; i_tSortRow_1_SortIn < array_tSortRow_1_SortIn.length; i_tSortRow_1_SortIn++) {
+					current_tSortRow_1_SortIn = array_tSortRow_1_SortIn[i_tSortRow_1_SortIn];
+					row5.region = current_tSortRow_1_SortIn.region;
+					// increase number of line sorted
+					nb_line_tSortRow_1_SortIn++;
+
+					/**
+					 * [tSortRow_1_SortIn begin ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn main ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+					tos_count_tSortRow_1_SortIn++;
+
+					/**
+					 * [tSortRow_1_SortIn main ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn process_data_begin ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+					/**
+					 * [tSortRow_1_SortIn process_data_begin ] stop
+					 */
+
+					/**
+					 * [tMap_3 main ] start
+					 */
+
+					currentComponent = "tMap_3";
+
+					if (execStat) {
+						runStat.updateStatOnConnection(iterateId, 1, 1, "row5");
+					}
+
+					boolean hasCasePrimitiveKeyWithNull_tMap_3 = false;
+
+					// ###############################
+					// # Input tables (lookups)
+					boolean rejectedInnerJoin_tMap_3 = false;
+					boolean mainRowRejected_tMap_3 = false;
+
+					// ###############################
+					{ // start of Var scope
+
+						// ###############################
+						// # Vars tables
+
+						Var__tMap_3__Struct Var = Var__tMap_3;
+						Var.var1 = Numeric.sequence("ok", 1, 1);// ###############################
+						// ###############################
+						// # Output tables
+
+						region = null;
+
+// # Output table : 'region'
+						region_tmp.id_region = Var.var1;
+						region_tmp.nom_region = row5.region;
+						region = region_tmp;
+// ###############################
+
+					} // end of Var scope
+
+					rejectedInnerJoin_tMap_3 = false;
+
+					tos_count_tMap_3++;
+
+					/**
+					 * [tMap_3 main ] stop
+					 */
+
+					/**
+					 * [tMap_3 process_data_begin ] start
+					 */
+
+					currentComponent = "tMap_3";
+
+					/**
+					 * [tMap_3 process_data_begin ] stop
+					 */
+// Start of branch "region"
+					if (region != null) {
+
+						/**
+						 * [tHDFSOutput_1 main ] start
+						 */
+
+						currentComponent = "tHDFSOutput_1";
+
+						if (execStat) {
+							runStat.updateStatOnConnection(iterateId, 1, 1, "region");
+						}
+
+						StringBuilder sb_tHDFSOutput_1 = new StringBuilder();
+
+						sb_tHDFSOutput_1.append(
+
+								region.id_region
+
+						);
+
+						sb_tHDFSOutput_1.append(";");
+
+						if (region.nom_region != null) {
+
+							sb_tHDFSOutput_1.append(
+
+									region.nom_region
+
+							);
+
+						}
+
+						sb_tHDFSOutput_1.append("\n");
+
+						outtHDFSOutput_1.write(sb_tHDFSOutput_1.toString());
+
+						nb_line_tHDFSOutput_1++;
+
+						tos_count_tHDFSOutput_1++;
+
+						/**
+						 * [tHDFSOutput_1 main ] stop
+						 */
+
+						/**
+						 * [tHDFSOutput_1 process_data_begin ] start
+						 */
+
+						currentComponent = "tHDFSOutput_1";
+
+						/**
+						 * [tHDFSOutput_1 process_data_begin ] stop
+						 */
+
+						/**
+						 * [tHDFSOutput_1 process_data_end ] start
+						 */
+
+						currentComponent = "tHDFSOutput_1";
+
+						/**
+						 * [tHDFSOutput_1 process_data_end ] stop
+						 */
+
+					} // End of branch "region"
+
+					/**
+					 * [tMap_3 process_data_end ] start
+					 */
+
+					currentComponent = "tMap_3";
+
+					/**
+					 * [tMap_3 process_data_end ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn process_data_end ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+					/**
+					 * [tSortRow_1_SortIn process_data_end ] stop
+					 */
+
+					/**
+					 * [tSortRow_1_SortIn end ] start
+					 */
+
+					currentVirtualComponent = "tSortRow_1";
+
+					currentComponent = "tSortRow_1_SortIn";
+
+				}
+
+				globalMap.put("tSortRow_1_SortIn_NB_LINE", nb_line_tSortRow_1_SortIn);
+
+				ok_Hash.put("tSortRow_1_SortIn", true);
+				end_Hash.put("tSortRow_1_SortIn", System.currentTimeMillis());
+
+				/**
+				 * [tSortRow_1_SortIn end ] stop
+				 */
+
+				/**
 				 * [tMap_3 end ] start
 				 */
 
@@ -4001,7 +4361,7 @@ public class Dim_Region implements TalendJob {
 // ###############################      
 
 				if (execStat) {
-					runStat.updateStat(resourceMap, iterateId, 2, 0, "row4");
+					runStat.updateStat(resourceMap, iterateId, 2, 0, "row5");
 				}
 
 				ok_Hash.put("tMap_3", true);
@@ -4038,6 +4398,8 @@ public class Dim_Region implements TalendJob {
 
 			TalendException te = new TalendException(e, currentComponent, globalMap);
 
+			te.setVirtualComponentName(currentVirtualComponent);
+
 			throw te;
 		} catch (java.lang.Error error) {
 
@@ -4045,6 +4407,9 @@ public class Dim_Region implements TalendJob {
 
 			throw error;
 		} finally {
+
+			// free memory for "tSortRow_1_SortIn"
+			globalMap.remove("tSortRow_1");
 
 			try {
 
@@ -4106,6 +4471,30 @@ public class Dim_Region implements TalendJob {
 
 				/**
 				 * [tUniqRow_1 finally ] stop
+				 */
+
+				/**
+				 * [tSortRow_1_SortOut finally ] start
+				 */
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortOut";
+
+				/**
+				 * [tSortRow_1_SortOut finally ] stop
+				 */
+
+				/**
+				 * [tSortRow_1_SortIn finally ] start
+				 */
+
+				currentVirtualComponent = "tSortRow_1";
+
+				currentComponent = "tSortRow_1_SortIn";
+
+				/**
+				 * [tSortRow_1_SortIn finally ] stop
 				 */
 
 				/**
@@ -5047,6 +5436,6 @@ public class Dim_Region implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 152141 characters generated by Talend Open Studio for Big Data on the 13 mai
- * 2022 12:24:04 CEST
+ * 162645 characters generated by Talend Open Studio for Big Data on the 17 mai
+ * 2022 11:43:33 CEST
  ************************************************************************************************/

@@ -10,7 +10,7 @@
     <contextParameter comment="" name="PostgresSQL_Port" prompt="PostgresSQL_Port?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="5432"/>
     <contextParameter comment="" name="PostgresSQL_Database" prompt="PostgresSQL_Database?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="soins_medico_administratives"/>
     <contextParameter comment="" name="PostgresSQL_Login" prompt="PostgresSQL_Login?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_String" value="postgres"/>
-    <contextParameter comment="" name="PostgresSQL_Password" prompt="PostgresSQL_Password?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_Password" value="enc:system.encryption.key.v1:W2TiT/cxWowwGrjyKUDE0+usxjbeG8Qu93BUeuptKsA="/>
+    <contextParameter comment="" name="PostgresSQL_Password" prompt="PostgresSQL_Password?" promptNeeded="false" repositoryContextId="_v2gXoM_QEeyZxa0Y8zFDkA" type="id_Password" value="enc:system.encryption.key.v1:LQd1NWNnrga2tDgHIUTgG4+SIOUU/nSBtEcR1XPeFUU="/>
   </context>
   <parameters>
     <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
@@ -53,7 +53,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:SwhuZ6yhh9Ih5g2RRG6t9ZgHsxMr8pUTZVpr23q3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:UA2r0tZI4Of0KvSRSc3OdTZ5IfTRxg9WXR32ygBD" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -88,7 +88,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:YY8ufgFc3IliOWXvrMbk5k+xvBljc+LgHi8Z2B02" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:plL5fKeRwsnP2CORY7JH3NmvHfD45XdlZqgXflTU" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -138,7 +138,7 @@
     <elementParameter field="CHECK" name="USE_MAPRTICKET" value="false" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;cloudera&quot;"/>
     <elementParameter field="TEXT" name="GROUP" value="&quot;supergroup&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:Gui85HZbrJXxsLtfPsoKwCAd3Lfa1k7JHcWeJ5FA" show="false"/>
+    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:BkNuZtqx8R4Nq1MTbVVLsHHXuTs1bC6s+hEkGOUY" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_CLUSTER" value="&quot;demo.mapr.com&quot;" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_DURATION" value="" show="false"/>
     <elementParameter field="TABLE" name="HADOOP_ADVANCED_PROPERTIES"/>
@@ -147,8 +147,8 @@
     <elementParameter field="TEXT" name="HDFS_ENCRYPTION_KEY_PROVIDER" value="&quot;kms://http@localhost:16000/kms&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_FS_DEFAULT_NAME" value="&quot;adl://account.azuredatalakestore.net&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_CLIENT_ID" value="&quot;XXXX&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:F1a0NDLaHDY5xj5nRmiho58HbntVYHYAEJzUyx3OQkkLJnQBJqnNMNmTdGe8YcK7KlTPI03xIVDXfhdR/mr/lOzBnq5vu1QuFeeJM0CFU3M=" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:n1ypCjZgGuyX5iO5AchjSyzTwPat5ro2GSUAJaVuClFD1Q==" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:TOIk7HmtYWEQDk/XJ3r2gDATGhAynS1ROzPVuUBRLdX/k6ZHLTr8dRob3Nm28TQL96upClq083C3Gww6ekaRuVhqSppOMgtMHTjaUyzkvpc=" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:RSWD4d3u6thgBU30k+H/pe+Lhucrf8HEwd1d6vgxR9e5wA==" show="false"/>
     <elementParameter field="CHECK" name="SET_MAPR_HOME_DIR" value="false" show="false"/>
     <elementParameter field="TEXT" name="MAPR_HOME_DIR" value="&quot;/opt/mapr&quot;" show="false"/>
     <elementParameter field="CHECK" name="SET_HADOOP_LOGIN" value="false" show="false"/>
@@ -264,16 +264,18 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="Visite">
       <column comment="" key="false" length="2" name="Num_Hospitalisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Date_Entree" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Jour_Hospitalisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Date_Visite" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Nb_Jours" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties/>
-      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <varTables sizeState="INTERMEDIATE" name="Var">
+        <mapperTableEntries name="TrimDateHospitalisation" expression="StringHandling.RIGHT(row1.Date_Entree,4)+&quot;-&quot;+StringHandling.RIGHT(StringHandling.LEFT(row1.Date_Entree,5),2)+&quot;-&quot;+StringHandling.LEFT(row1.Date_Entree,2) " type="id_String"/>
+      </varTables>
       <outputTables sizeState="INTERMEDIATE" name="Visite">
         <mapperTableEntries name="Num_Hospitalisation" expression="row1.Num_Hospitalisation " type="id_Integer" nullable="true"/>
-        <mapperTableEntries name="Date_Entree" expression="row1.Date_Entree " type="id_String" nullable="true"/>
-        <mapperTableEntries name="Jour_Hospitalisation" expression="row1.Jour_Hospitalisation " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Date_Visite" expression="Var.TrimDateHospitalisation " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Nb_Jours" expression="row1.Jour_Hospitalisation " type="id_Integer" nullable="true"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="row1" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="Num_Hospitalisation" type="id_Integer" nullable="true"/>
@@ -303,8 +305,8 @@
     <elementParameter field="TEXT" name="FS_DEFAULT_NAME" value="context.HDFS_Cluster_NameNodeUri"/>
     <elementParameter field="TEXT" name="ADLS_FS_DEFAULT_NAME" value="&quot;adl://account.azuredatalakestore.net&quot;" show="false"/>
     <elementParameter field="TEXT" name="ADLS_CLIENT_ID" value="&quot;XXXX&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:+8O1oCzhFMKrrRRO6z+rHfDNl/G6GOQiCcNdgO68fUMTa/HMrTN2izyOKAsJj5v7wdf7iJmgxdckyGRsZZCjT5DOH56akmlHinQwu8FvnM4=" show="false"/>
-    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:GSUI4RkbzKFyYzh/SFTlXalNyrlHaiyZOXNrJY60q1gKig==" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_AUTH_TOKEN_ENDPOINT" value="enc:system.encryption.key.v1:vxEbRfgD1MH4R6Le/PdoFxz3xDwvYpwbBNCHDjyrv+2p0FSUQaEZQW3Fvu+pUfmUX60jKXv2dKGMvJiirCR1JpDnsmrzrdWFV8bzgADg3qw=" show="false"/>
+    <elementParameter field="PASSWORD" name="ADLS_CLIENT_KEY" value="enc:system.encryption.key.v1:Id9AvHr7+qBchc9iJv/2RNvDOUzyE1F7K6bX+DjIp8El7A==" show="false"/>
     <elementParameter field="CHECK" name="USE_DATANODE_HOSTNAME" value="true"/>
     <elementParameter field="CHECK" name="USE_KRB" value="false"/>
     <elementParameter field="TEXT" name="NAMENODE_PRINCIPAL" value="&quot;hdfs/_HOST@EXAMPLE.COM&quot;" show="false"/>
@@ -314,7 +316,7 @@
     <elementParameter field="CHECK" name="USE_MAPRTICKET" value="false" show="false"/>
     <elementParameter field="TEXT" name="USERNAME" value="&quot;cloudera&quot;"/>
     <elementParameter field="TEXT" name="GROUP" value="&quot;supergroup&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:Mrw4IfxrtK3HD0RyL+0ks5qf3Gf7qx1olQNaQNzR" show="false"/>
+    <elementParameter field="PASSWORD" name="MAPRTICKET_PASSWORD" value="enc:system.encryption.key.v1:+K5ue7DjydsIHitjWlk1f4mi5OForTkozlvqyDzu" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_CLUSTER" value="&quot;demo.mapr.com&quot;" show="false"/>
     <elementParameter field="TEXT" name="MAPRTICKET_DURATION" value="" show="false"/>
     <elementParameter field="BOTH_HADOOP" name="FILENAME" value="&quot;/user/cloudera/CHU/Dim_Visite/Dim_Visite.txt&quot;"/>
@@ -342,8 +344,8 @@
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="metadata" name="tHDFSOutput_1">
       <column comment="" key="false" length="2" name="Num_Hospitalisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
-      <column comment="" key="false" length="10" name="Date_Entree" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
-      <column comment="" key="false" length="2" name="Jour_Hospitalisation" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Date_Visite" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="2" name="Nb_Jours" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_Integer" usefulColumn="true"/>
     </metadata>
   </node>
   <connection connectorName="SUBJOB_OK" label="OnSubjobOk" lineStyle="1" metaname="tHDFSConnection_1" offsetLabelX="0" offsetLabelY="0" source="tHDFSConnection_1" target="tFileInputDelimited_1">
@@ -354,6 +356,11 @@
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="row1" show="false"/>
   </connection>
   <connection connectorName="FLOW" label="Visite" lineStyle="0" metaname="Visite" offsetLabelX="0" offsetLabelY="0" source="tMap_1" target="tHDFSOutput_1">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="Date_Visite"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value=""/>
+    </elementParameter>
     <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="Visite" show="false"/>
   </connection>
