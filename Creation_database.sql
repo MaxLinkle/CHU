@@ -10,7 +10,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS fact_hosco(
 )
 COMMENT 'Fact table Hosco'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ';'
+FIELDS TERMINATED BY '\;'
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/CHU/Fact_HosCo';
 
@@ -23,9 +23,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dim_rdv(
 )
 COMMENT 'Dim table RDV'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ';'
+FIELDS TERMINATED BY '\;'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Dim_RDV'
+LOCATION '/user/cloudera/CHU/Dim_RDV';
 
 --Creating dimension table Region
 create external table if not exists dim_region( 
@@ -100,11 +100,11 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dim_visite(
     date_visite date,
     nb_jours int
 )
-COMMENT 'Dim table RDV'
+COMMENT 'Dim table Visites'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ';'
+FIELDS TERMINATED BY '\;'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Dim_Visite'
+LOCATION '/user/cloudera/CHU/Dim_Visite';
 
 -- Creating dimension table Professionnel Sante
 CREATE EXTERNAL TABLE IF NOT EXISTS dim_professionnel_sante(
@@ -114,18 +114,18 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dim_professionnel_sante(
 )
 COMMENT 'Dim table Professionnel Sante'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ';'
+FIELDS TERMINATED BY '\;'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Dim_ProfessionnelSante'
+LOCATION '/user/cloudera/CHU/Dim_ProfessionnelSante';
 
 -- Creation Fact table Hospitalisation
-CREATE EXTERNAL TABLE IF NOT EXISTS dim_Hospitalisation(
+CREATE EXTERNAL TABLE IF NOT EXISTS fact_hospitalisation(
     num_hospitalisation INT,
     id_patient int,
     code_diagnostic string
 )
-COMMENT 'Dim table Hospitalisation'
+COMMENT 'Fact table Hospitalisation'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ';'
+FIELDS TERMINATED BY '\;'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Fact_Hospitalisation'
+LOCATION '/user/cloudera/CHU/Fact_Hospitalisation';
