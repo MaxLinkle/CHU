@@ -76,7 +76,7 @@ location '/user/cloudera/CHU/Fact_Satisfaction';
 create external table if not exists dim_patient(
     id_patient int,
     sexe string,
-    age string)
+    age int)
 comment 'Dim table Patients'
 row format delimited
 fields terminated by '\;'
