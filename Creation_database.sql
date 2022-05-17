@@ -40,7 +40,7 @@ location '/user/cloudera/CHU/Dim_Region';
 
 --Creating dimension table Etablissement
 create external table if not exists dim_etablissement(
-    identifiant_organisation string,
+    id_organisation string,
     cedex string,
     score_all_rea_ajust float
 )
@@ -53,7 +53,7 @@ location '/user/cloudera/CHU/Dim_Etablissement';
 --Creating fact table Deces
 create external table if not exists fact_deces(
     id_region int,
-    nombre_deces int
+    nb_deces int
 )
 comment 'Fact table Deces'
 row format delimited
@@ -64,7 +64,7 @@ location '/user/cloudera/CHU/Fact_Deces';
 --Creating fact table Satisfaction
 create external table if not exists fact_satisfaction(
     id_region int,
-    identifiant_organisation string
+    id_organisation string
 )
 comment 'Fact table Satisfactions'
 row format delimited
