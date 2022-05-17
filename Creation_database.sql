@@ -10,7 +10,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS fact_hosco(
 )
 COMMENT 'Fact table Hosco'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\;'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
 LOCATION '/user/cloudera/CHU/Fact_HosCo';
 
@@ -23,9 +23,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dim_rdv(
 )
 COMMENT 'Dim table RDV'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\;'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Dim_RDV';
+LOCATION '/user/cloudera/CHU/Dim_RDV'
 
 --Creating dimension table Region
 create external table if not exists dim_region( 
@@ -100,25 +100,25 @@ CREATE EXTERNAL TABLE IF NOT EXISTS dim_visite(
     date_visite date,
     nb_jours int
 )
-COMMENT 'Dim table Visites'
+COMMENT 'Dim table RDV'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\;'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Dim_Visite';
+LOCATION '/user/cloudera/CHU/Dim_Visite'
 
 -- Creating dimension table Professionnel Sante
 CREATE EXTERNAL TABLE IF NOT EXISTS dim_professionnel_sante(
-    id_professionnel_sante INT,
-    nom string,
-    prenom string
+    id_professionnel_sante string,
+    nom STRING,
+    prenom STRING
 )
 COMMENT 'Dim table Professionnel Sante'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\;'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Dim_ProfessionnelSante';
+LOCATION '/user/cloudera/CHU/Dim_ProfessionnelSante'
 
--- Creation Fact table Hospitalisation
+-- Creating Fact table Hospitalisation
 CREATE EXTERNAL TABLE IF NOT EXISTS fact_hospitalisation(
     num_hospitalisation INT,
     id_patient int,
@@ -126,6 +126,20 @@ CREATE EXTERNAL TABLE IF NOT EXISTS fact_hospitalisation(
 )
 COMMENT 'Fact table Hospitalisation'
 ROW FORMAT DELIMITED
-FIELDS TERMINATED BY '\;'
+FIELDS TERMINATED BY ';'
 STORED AS TEXTFILE
-LOCATION '/user/cloudera/CHU/Fact_Hospitalisation';
+LOCATION '/user/cloudera/CHU/Fact_Hospitalisation'
+
+-- Creating Fact table Consutation
+CREATE EXTERNAL TABLE IF NOT EXISTS fact_consultation(
+    num_consultation INT,
+    id_patient INT,
+    code_diagnostic STRING,
+    id_professionnel_sante STRING,
+    id_organisation STRING
+)
+COMMENT 'Fact table Consultation'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ';'
+STORED AS TEXTFILE
+LOCATION '/user/cloudera/CHU/Fact_Consultation'
